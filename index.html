@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D-FLOW — Prototype Smart Manufacturing | BCC INFINITY 2026</title>
+<meta name="description" content="Prototype interaktif D-FLOW: Good Manufacturing System berbasis kebutuhan pelanggan dengan integrasi smart wearable untuk PT TMMIN. BCC INFINITY Dynamic Fusion 2026.">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjJkM2VlIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzNiODJmNiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2E3OGJmYSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjQ4MCIgaGVpZ2h0PSI0ODAiIHJ4PSIxMTIiIGZpbGw9IiMwYjE0MjYiLz4KPHJlY3QgeD0iMTYiIHk9IjE2IiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjQ4MCIgcng9IjExMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjYiIG9wYWNpdHk9Ii41NSIvPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NiAzNikgc2NhbGUoMy42KSI+CiAgPHBhdGggZD0iTTMwIDk1IFYyNSBINTAgQTM1IDM1IDAgMCAxIDUwIDk1IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZykiIHN0cm9rZS13aWR0aD0iMTMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0zMCA5NSBIMTAwIiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZykiIHN0cm9rZS13aWR0aD0iMTMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik05MiA4MyBMMTA2IDk1IEw5MiAxMDciIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2E3OGJmYSIgc3Ryb2tlLXdpZHRoPSIxMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPGNpcmNsZSBjeD0iNDQiIGN5PSI2MCIgcj0iNS41IiBmaWxsPSIjMjJkM2VlIi8+PGNpcmNsZSBjeD0iNTciIGN5PSI2MCIgcj0iNS41IiBmaWxsPSIjM2I4MmY2Ii8+PGNpcmNsZSBjeD0iNzAiIGN5PSI2MCIgcj0iNS41IiBmaWxsPSIjYTc4YmZhIi8+CjwvZz48L3N2Zz4=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070d1a; --bg2:#0b1426; --panel:#0f1b33; --panel2:#132341; --line:#1f3358;
+  --text:#e8eefb; --muted:#8fa3c7; --dim:#5d7096;
+  --blue:#3b82f6; --cyan:#22d3ee; --orange:#f59e0b; --amber:#fbbf24; --green:#22c55e; --red:#ef4444; --violet:#a78bfa;
+  --grad:linear-gradient(120deg,#22d3ee 0%,#3b82f6 45%,#a78bfa 100%);
+  --radius:18px; --shadow:0 20px 60px -20px rgba(0,0,0,.6);
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding:110px 0;position:relative}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--cyan)}
+h2{font-size:clamp(28px,4vw,44px);line-height:1.15;font-weight:800;letter-spacing:-.02em;margin:14px 0 16px}
+.lead{color:var(--muted);font-size:17px;max-width:720px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+nav.solid{background:rgba(7,13,26,.78);backdrop-filter:blur(14px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.02em}
+.brand .mk{width:36px;height:36px;border-radius:10px}
+.navl{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+.navl a{position:relative;transition:color .25s}
+.navl a:hover,.navl a.act{color:var(--text)}
+.navl a.act::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;background:var(--grad);border-radius:2px}
+.navcta{padding:9px 16px;border-radius:999px;border:1px solid var(--line);font-size:13px;font-weight:600;transition:all .25s}
+.navcta:hover{border-color:var(--cyan);color:var(--cyan)}
+@media(max-width:900px){.navl{display:none}}
+
+/* hero */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:90px;overflow:hidden}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+.hero-glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.18),transparent 60%);top:-250px;right:-250px;filter:blur(20px);animation:float 14s ease-in-out infinite}
+@keyframes float{50%{transform:translate(-60px,40px) scale(1.05)}}
+.hero-in{position:relative;z-index:2}
+.tag{display:inline-flex;gap:10px;align-items:center;padding:7px 14px;border-radius:999px;background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.25);font-size:12.5px;color:#bdf4ff}
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(34,197,94,.7);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 10px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+.hero h1{font-size:clamp(56px,10vw,128px);font-weight:800;letter-spacing:-.05em;line-height:.95;margin:26px 0 18px}
+.hero h1 span{display:inline-block;opacity:0;transform:translateY(60px) rotate(4deg);animation:up 1s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+.hero .sub{font-size:clamp(17px,2vw,21px);color:var(--muted);max-width:680px}
+.hero .sub b{color:var(--text);font-weight:600}
+.ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.btn{padding:14px 24px;border-radius:14px;font-weight:700;font-size:15px;border:0;display:inline-flex;gap:10px;align-items:center;transition:transform .25s,box-shadow .25s}
+.btn.p{background:var(--grad);color:#06101f;box-shadow:0 10px 30px -8px rgba(59,130,246,.6)}
+.btn.p:hover{transform:translateY(-2px);box-shadow:0 16px 40px -8px rgba(59,130,246,.75)}
+.btn.g{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn.g:hover{border-color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:64px;max-width:880px}
+.stat{padding:18px 20px;border-radius:16px;background:rgba(15,27,51,.6);border:1px solid var(--line);backdrop-filter:blur(8px)}
+.stat .v{font-size:28px;font-weight:800;font-family:var(--mono);letter-spacing:-.02em}
+.stat .l{font-size:12.5px;color:var(--muted);margin-top:2px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:2;color:var(--dim);font-size:11px;letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
+.scroll-hint::after{content:"";width:1px;height:40px;background:linear-gradient(var(--cyan),transparent);animation:drip 2s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* problem */
+.kgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:44px}
+.kc{padding:20px;border-radius:var(--radius);background:var(--panel);border:1px solid var(--line);position:relative;overflow:hidden;transition:transform .35s,border-color .35s}
+.kc:hover{transform:translateY(-4px);border-color:#2c4677}
+.kc .dim{font-family:var(--mono);font-size:10.5px;padding:3px 8px;border-radius:6px;position:absolute;top:16px;right:16px}
+.kc h4{font-size:14px;font-weight:600;color:var(--muted);margin-bottom:14px;padding-right:40px}
+.kc .row{display:flex;align-items:baseline;gap:10px}
+.kc .now{font-size:26px;font-weight:800;font-family:var(--mono);color:#fca5a5}
+.kc .arr{color:var(--dim)}
+.kc .tgt{font-size:18px;font-weight:700;font-family:var(--mono);color:#86efac}
+.bar{height:6px;border-radius:6px;background:#1a2b4d;margin-top:16px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--red),var(--amber));transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.kc small{display:block;margin-top:8px;font-size:12px;color:var(--dim)}
+
+/* simulator */
+#sim{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.simbox{margin-top:40px;display:grid;grid-template-columns:1fr 330px;gap:18px}
+@media(max-width:1020px){.simbox{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.stage{padding:16px;position:relative}
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:4px 4px 14px}
+.seg{display:inline-flex;background:#0a1529;border:1px solid var(--line);border-radius:12px;padding:4px;position:relative}
+.seg button{position:relative;z-index:1;background:none;border:0;color:var(--muted);padding:9px 16px;font-size:13px;font-weight:700;border-radius:9px;transition:color .3s}
+.seg button.on{color:#06101f}
+.seg .pill{position:absolute;top:4px;bottom:4px;border-radius:9px;background:var(--grad);transition:left .45s cubic-bezier(.3,.8,.2,1),width .45s cubic-bezier(.3,.8,.2,1)}
+.seg.a .pill{background:linear-gradient(120deg,#9ca3af,#64748b)}
+.ctl{display:flex;gap:10px;align-items:center;font-size:12.5px;color:var(--muted)}
+.ctl input[type=range]{width:150px;accent-color:var(--cyan)}
+.ctl .val{font-family:var(--mono);color:var(--text);min-width:52px}
+.chip{padding:8px 12px;border-radius:10px;background:#0a1529;border:1px solid var(--line);color:var(--text);font-size:12.5px;font-weight:600;transition:all .25s;display:inline-flex;gap:7px;align-items:center}
+.chip:hover{border-color:var(--cyan);color:var(--cyan)}
+.chip .d{width:8px;height:8px;border-radius:50%}
+#lineCanvas{width:100%;height:auto;display:block;border-radius:14px;background:#081123}
+.legend{display:flex;flex-wrap:wrap;gap:16px;padding:12px 6px 2px;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.side{display:flex;flex-direction:column;gap:18px}
+.kpis{padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpis h3{grid-column:1/-1;font-size:13px;color:var(--muted);font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.kpis h3 em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--cyan)}
+.kp{padding:12px;border-radius:12px;background:#0a1529;border:1px solid #17284a}
+.kp .t{font-size:11px;color:var(--dim)}
+.kp .n{font-family:var(--mono);font-size:19px;font-weight:700;transition:color .4s}
+.good{color:#86efac}.bad{color:#fca5a5}.warn{color:#fcd34d}
+
+/* watch */
+.watchwrap{padding:18px;display:flex;gap:16px;align-items:center}
+.watch{width:128px;flex:none;position:relative}
+.watch .strap{position:absolute;left:34px;right:34px;background:#1c2742;height:40px}
+.watch .strap.t{top:-26px;border-radius:10px 10px 0 0}.watch .strap.b{bottom:-26px;border-radius:0 0 10px 10px}
+.watch .body{position:relative;height:140px;border-radius:34px;background:#020617;border:4px solid #334155;padding:10px;box-shadow:inset 0 0 0 2px #0f172a}
+.watch .screen{height:100%;border-radius:24px;background:#0b1a33;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8px;transition:background .4s;overflow:hidden}
+.watch .screen b{font-size:12px;letter-spacing:.1em}
+.watch .screen p{font-size:10.5px;line-height:1.3;margin-top:4px;color:#dbeafe}
+.watch .screen .tm{font-family:var(--mono);font-size:14px;margin-top:6px;font-weight:700}
+.watch.alert .screen{background:#b91c1c;animation:buzz .5s ease-in-out 2}
+.watch.ok .screen{background:#15803d}
+.watch.safe .screen{background:#b45309;animation:buzz .5s ease-in-out 2}
+@keyframes buzz{25%{transform:translateX(-2px)}75%{transform:translateX(2px)}}
+.log{flex:1;font-size:12px;color:var(--muted);height:150px;overflow:hidden;display:flex;flex-direction:column;gap:6px;mask-image:linear-gradient(#000 70%,transparent)}
+.log div{padding:6px 9px;border-radius:8px;background:#0a1529;border-left:3px solid var(--line);animation:slidein .4s ease}
+.log div.r{border-color:var(--red)}.log div.g{border-color:var(--green)}.log div.o{border-color:var(--orange)}.log div.b{border-color:var(--blue)}
+@keyframes slidein{from{opacity:0;transform:translateX(-10px)}}
+.note{font-size:12px;color:var(--dim);margin-top:14px}
+
+/* architecture */
+.arch{margin-top:48px;display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start}
+@media(max-width:1020px){.arch{grid-template-columns:1fr}}
+.arch svg{width:100%;height:auto}
+.node{cursor:pointer;transition:opacity .3s}
+.node rect{transition:all .35s}
+.node:hover rect,.node.sel rect{stroke:var(--cyan);stroke-width:2;filter:drop-shadow(0 0 10px rgba(34,211,238,.45))}
+.flow{stroke-dasharray:6 8;animation:dash 1.2s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-28}}
+.info{padding:24px;position:sticky;top:90px}
+.info .k{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:.14em}
+.info h3{font-size:22px;margin:8px 0 10px}
+.info p{color:var(--muted);font-size:14.5px}
+.info .ch{margin-top:16px;padding:12px 14px;border-radius:12px;background:#0a1529;font-size:13px;border:1px dashed var(--line)}
+.info .ch b{color:var(--amber);font-weight:600}
+
+/* wearables */
+.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+@media(max-width:900px){.wgrid{grid-template-columns:1fr}}
+.wc{padding:26px;position:relative;overflow:hidden;transition:transform .4s}
+.wc:hover{transform:translateY(-6px)}
+.wc .vis{height:200px;display:grid;place-items:center;margin-bottom:10px}
+.wc h3{font-size:20px}
+.wc p{color:var(--muted);font-size:14px;margin:6px 0 14px}
+.wc ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.wc li{font-size:13px;display:flex;gap:9px;align-items:flex-start;color:#c7d4ee}
+.wc li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan);margin-top:7px;flex:none}
+.wc .kpi{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--amber)}
+.ring{transform-origin:center;animation:ring 2.4s ease-out infinite}
+.ring.r2{animation-delay:.8s}.ring.r3{animation-delay:1.6s}
+@keyframes ring{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+.laser{animation:scan 1.8s ease-in-out infinite}
+@keyframes scan{0%,100%{transform:translateY(0);opacity:.2}50%{transform:translateY(46px);opacity:1}}
+.blink{animation:bl 1.8s steps(1) infinite}
+@keyframes bl{50%{fill:#22c55e}}
+.wscreen{animation:ws 6s infinite}
+@keyframes ws{0%,30%{fill:#b91c1c}33%,63%{fill:#2563eb}66%,100%{fill:#15803d}}
+
+/* calc */
+.calc{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:900px){.calc{grid-template-columns:1fr}}
+.calc .card{padding:28px}
+.big-r{display:flex;justify-content:space-between;align-items:center;margin:8px 0 22px}
+.big-r .n{font-family:var(--mono);font-size:44px;font-weight:700}
+.big-r input{width:100%}
+input[type=range].lg{width:100%;height:6px;accent-color:var(--cyan)}
+.ticks{display:flex;justify-content:space-between;font-size:11px;color:var(--dim);font-family:var(--mono);margin-top:6px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cbox{padding:18px;border-radius:14px;background:#0a1529;border:1px solid var(--line)}
+.cbox h4{font-size:13px;color:var(--muted);font-weight:600}
+.cbox .ct{font-family:var(--mono);font-size:12px;color:var(--dim)}
+.cbox .cap{font-family:var(--mono);font-size:30px;font-weight:700;margin-top:6px}
+.cbox .ot{margin-top:10px;font-size:13px;padding:6px 10px;border-radius:8px;display:inline-block;font-weight:600;transition:all .35s}
+.cbox .ot.bad{background:rgba(239,68,68,.12);color:#fca5a5}.cbox .ot.good{background:rgba(34,197,94,.12);color:#86efac}
+.gauge{margin-top:22px;position:relative;height:54px}
+.gauge .trk{position:absolute;left:0;right:0;top:20px;height:12px;border-radius:12px;background:#0a1529;border:1px solid var(--line)}
+.gauge .mk{position:absolute;top:8px;width:2px;height:36px;transition:left .5s cubic-bezier(.2,.8,.2,1)}
+.gauge .mk span{position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:10.5px;font-family:var(--mono);white-space:nowrap}
+.gauge .dm{position:absolute;top:16px;width:20px;height:20px;border-radius:50%;margin-left:-10px;background:var(--amber);box-shadow:0 0 0 6px rgba(251,191,36,.2);transition:left .3s}
+
+/* impact */
+.imp{margin-top:44px;display:grid;grid-template-columns:1.4fr 1fr;gap:22px}
+@media(max-width:900px){.imp{grid-template-columns:1fr}}
+.imp .card{padding:26px}
+#cfChart{width:100%;height:auto}
+.cfbar{transition:height 1.2s cubic-bezier(.2,.8,.2,1),y 1.2s cubic-bezier(.2,.8,.2,1)}
+.cfline{transition:stroke-dashoffset 1.8s ease .4s}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.mgrid .m{padding:16px;border-radius:14px;background:#0a1529;border:1px solid var(--line)}
+.mgrid .m .v{font-family:var(--mono);font-size:24px;font-weight:700}
+.mgrid .m .l{font-size:12px;color:var(--muted)}
+.blist{margin-top:6px;display:flex;flex-direction:column;gap:10px}
+.bi{display:grid;grid-template-columns:170px 1fr 60px;gap:10px;align-items:center;font-size:13px}
+.bi .tr{height:10px;border-radius:10px;background:#0a1529;overflow:hidden}
+.bi .tr i{display:block;height:100%;width:0;border-radius:10px;background:var(--grad);transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.bi .vv{font-family:var(--mono);text-align:right;color:var(--muted)}
+
+/* roadmap */
+.road{margin-top:56px;position:relative}
+.road .ln{position:absolute;left:0;right:0;top:27px;height:2px;background:var(--line)}
+.road .ln i{display:block;height:100%;width:0;background:var(--grad);transition:width 2.4s cubic-bezier(.3,.7,.2,1)}
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative}
+@media(max-width:900px){.phases{grid-template-columns:1fr}.road .ln{display:none}}
+.ph .dot{width:56px;height:56px;border-radius:50%;background:var(--bg);border:2px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-weight:700;transition:all .6s}
+.ph.in .dot{border-color:var(--cyan);box-shadow:0 0 0 8px rgba(34,211,238,.08);color:var(--cyan)}
+.ph .card{padding:22px;margin-top:18px}
+.ph .when{font-family:var(--mono);font-size:12px;color:var(--cyan)}
+.ph h3{font-size:19px;margin:4px 0 10px}
+.ph ul{list-style:none;font-size:13.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.ph li::before{content:"→ ";color:var(--dim)}
+.ph .gate{margin-top:14px;padding:10px 12px;border-radius:10px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);font-size:12.5px;color:#fde68a}
+
+footer{padding:70px 0 50px;border-top:1px solid var(--line);background:#050a14}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
+@media(max-width:800px){.fgrid{grid-template-columns:1fr}}
+footer h4{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:12px;font-family:var(--mono)}
+footer p,footer li{color:var(--muted);font-size:14px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.disc{margin-top:40px;font-size:12px;color:var(--dim)}
+
+
+.flo-hero{position:absolute;right:6%;top:50%;width:min(300px,26vw);transform:translateY(-46%);z-index:3;animation:bob 4.5s ease-in-out infinite;filter:drop-shadow(0 30px 40px rgba(34,211,238,.18))}
+@keyframes bob{50%{transform:translateY(-52%) rotate(-2deg)}}
+.flo-say{position:absolute;right:calc(6% + min(250px,22vw));top:22%;z-index:3;padding:12px 16px;border-radius:16px 16px 4px 16px;background:rgba(15,27,51,.85);border:1px solid var(--line);font-size:13.5px;max-width:220px;backdrop-filter:blur(8px);opacity:0;animation:say .8s 1.6s forwards}
+.flo-say b{color:var(--cyan)}
+@keyframes say{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:1100px){.flo-hero,.flo-say{display:none}}
+.flo-sim{position:absolute;left:66%;top:42%;width:9.5%;z-index:2;transition:transform .3s;pointer-events:none}
+.flo-sim.pop{animation:pop .5s ease}
+@keyframes pop{40%{transform:scale(1.15) rotate(-4deg)}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}}
+</style>
+</head>
+<body>
+
+<nav id="nav"><div class="wrap">
+  <a href="#hero" class="brand"><img class="mk" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjJkM2VlIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzNiODJmNiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2E3OGJmYSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjQ4MCIgaGVpZ2h0PSI0ODAiIHJ4PSIxMTIiIGZpbGw9IiMwYjE0MjYiLz4KPHJlY3QgeD0iMTYiIHk9IjE2IiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjQ4MCIgcng9IjExMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjYiIG9wYWNpdHk9Ii41NSIvPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NiAzNikgc2NhbGUoMy42KSI+CiAgPHBhdGggZD0iTTMwIDk1IFYyNSBINTAgQTM1IDM1IDAgMCAxIDUwIDk1IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZykiIHN0cm9rZS13aWR0aD0iMTMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0zMCA5NSBIMTAwIiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZykiIHN0cm9rZS13aWR0aD0iMTMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik05MiA4MyBMMTA2IDk1IEw5MiAxMDciIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2E3OGJmYSIgc3Ryb2tlLXdpZHRoPSIxMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPGNpcmNsZSBjeD0iNDQiIGN5PSI2MCIgcj0iNS41IiBmaWxsPSIjMjJkM2VlIi8+PGNpcmNsZSBjeD0iNTciIGN5PSI2MCIgcj0iNS41IiBmaWxsPSIjM2I4MmY2Ii8+PGNpcmNsZSBjeD0iNzAiIGN5PSI2MCIgcj0iNS41IiBmaWxsPSIjYTc4YmZhIi8+CjwvZz48L3N2Zz4=" alt="Logo D-FLOW">D-FLOW</a>
+  <div class="navl">
+    <a href="#problem">Masalah</a><a href="#sim">Simulasi</a><a href="#arch">Arsitektur</a><a href="#wear">Wearable</a><a href="#calc">Kapasitas</a><a href="#impact">Dampak</a><a href="#road">Roadmap</a>
+  </div>
+  <a href="#sim" class="navcta">Jalankan simulasi →</a>
+</div></nav>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-glow"></div>
+  <div class="wrap hero-in">
+    <span class="tag rv"><i></i>Prototype interaktif · BCC INFINITY Dynamic Fusion 2026 · Studi kasus PT TMMIN</span>
+    <h1><span style="animation-delay:.05s">D</span><span style="animation-delay:.12s">-</span><span class="grad" style="animation-delay:.2s">F</span><span class="grad" style="animation-delay:.27s">L</span><span class="grad" style="animation-delay:.34s">O</span><span class="grad" style="animation-delay:.41s">W</span></h1>
+    <p class="sub rv d2"><b>Demand-synchronized Flexible Lean Operation with Wearables.</b> Good Manufacturing System yang menarik produksi dari pesanan, membangun kualitas di sumber, dan melindungi manusia secara real-time.</p>
+    <div class="ctas rv d3">
+      <a href="#sim" class="btn p">▶ Jalankan simulasi lini</a>
+      <a href="#arch" class="btn g">Lihat arsitektur sistem</a>
+    </div>
+    <div class="stats rv d4">
+      <div class="stat"><div class="v" data-count="14.08" data-dec="2" data-pre="Rp" data-suf=" M">Rp0</div><div class="l">manfaat per tahun</div></div>
+      <div class="stat"><div class="v" data-count="22" data-suf=" bln">0</div><div class="l">periode pengembalian</div></div>
+      <div class="stat"><div class="v" data-count="99" data-suf="%">0</div><div class="l">target first pass yield</div></div>
+      <div class="stat"><div class="v" data-count="0" data-suf=" jam">0</div><div class="l">lembur saat demand +15%</div></div>
+    </div>
+  </div>
+  <img class="flo-hero" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMzEwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjMxMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjJkM2VlIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzNiODJmNiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2E3OGJmYSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxnPgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSIyOTIiIHJ4PSI1OCIgcnk9IjkiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii4yMiIvPgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSIyOTIiIHJ4PSIzNCIgcnk9IjUiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii40NSIvPgogIDxwYXRoIGQ9Ik04MCAxOTAgUTQ2IDE3NiA0MiAxMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFlM2E4YSIgc3Ryb2tlLXdpZHRoPSIyNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTQyIDE0NiBMNDIgMTM3IiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iMjciLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjEyMiIgcj0iMTciIGZpbGw9IiNlOGVlZmIiLz48cGF0aCBkPSJNMTYwIDE5NCBRMTg2IDIxNCAxODQgMjM4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxZTNhOGEiIHN0cm9rZS13aWR0aD0iMjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjE4NCIgY3k9IjI1MiIgcj0iMTkiIGZpbGw9IiNjYmQ1ZTEiLz48cmVjdCB4PSIxNzMiIHk9IjI0MyIgd2lkdGg9IjIyIiBoZWlnaHQ9IjEzIiByeD0iMyIgZmlsbD0iIzFlM2E4YSIvPjxyZWN0IHg9IjE3NyIgeT0iMjQ2IiB3aWR0aD0iOCIgaGVpZ2h0PSI3IiByeD0iMS41IiBmaWxsPSIjZWY0NDQ0Ii8+PHBhdGggZD0iTTE4NCAyNzIgTDE3NiAzMDAgTTE4NCAyNzIgTDE5MiAzMDAiIHN0cm9rZT0iI2VmNDQ0NCIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIuNTUiLz4KICA8IS0tIGJvZHkgLS0+CiAgPHJlY3QgeD0iNjYiIHk9IjE2MCIgd2lkdGg9IjEwOCIgaGVpZ2h0PSIxMTIiIHJ4PSI0NCIgZmlsbD0iIzFlM2E4YSIvPgogIDxyZWN0IHg9IjY2IiB5PSIxNjAiIHdpZHRoPSIxMDgiIGhlaWdodD0iMTEyIiByeD0iNDQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzNiODJmNiIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHJlY3QgeD0iODgiIHk9IjE4NiIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQ0IiByeD0iMTIiIGZpbGw9IiMwYjE0MjYiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHJlY3QgeD0iOTQiIHk9IjE5MiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzE1ODAzZCIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMjEzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJywnTGliZXJhdGlvbiBTYW5zJyxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjEyIiBmaWxsPSIjZmZmIiBsZXR0ZXItc3BhY2luZz0iMSI+RkxPVzwvdGV4dD4KICA8cmVjdCB4PSI5OCIgeT0iMjQ0IiB3aWR0aD0iNDQiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii43Ii8+CiAgPCEtLSBuZWNrIC0tPgogIDxyZWN0IHg9IjEwNiIgeT0iMTUwIiB3aWR0aD0iMjgiIGhlaWdodD0iMTYiIHJ4PSI2IiBmaWxsPSIjMzM0MTU1Ii8+CiAgPCEtLSBoZWFkIC0tPgogIDxyZWN0IHg9IjYyIiB5PSI2OCIgd2lkdGg9IjExNiIgaGVpZ2h0PSI5MiIgcng9IjM4IiBmaWxsPSIjZThlZWZiIi8+CiAgPHJlY3QgeD0iNzYiIHk9Ijg2IiB3aWR0aD0iODgiIGhlaWdodD0iNTgiIHJ4PSIyNiIgZmlsbD0iIzBiMTQyNiIvPgogIDxwYXRoIGQ9Ik05MiAxMTIgcTEwIC0xMiAyMCAwIiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTEyOCAxMTIgcTEwIC0xMiAyMCAwIiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTEwNiAxMjYgcTE0IDEyIDI4IDAiIHN0cm9rZT0iIzIyZDNlZSIgc3Ryb2tlLXdpZHRoPSI1IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSI3MiIgY3k9IjEyOCIgcj0iNiIgZmlsbD0iI2ZkYTRhZiIgb3BhY2l0eT0iLjYiLz48Y2lyY2xlIGN4PSIxNjgiIGN5PSIxMjgiIHI9IjYiIGZpbGw9IiNmZGE0YWYiIG9wYWNpdHk9Ii42Ii8+CiAgPCEtLSBoZWxtZXQgLS0+CiAgPHBhdGggZD0iTTYwIDg0IFE2MCAzNiAxMjAgMzQgUTE4MCAzNiAxODAgODQgWiIgZmlsbD0iI2ZiYmYyNCIvPgogIDxyZWN0IHg9IjUwIiB5PSI3OCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSIxNCIgcng9IjciIGZpbGw9IiNmNTllMGIiLz4KICA8cmVjdCB4PSIxMTQiIHk9IjM2IiB3aWR0aD0iMTIiIGhlaWdodD0iNDQiIHJ4PSI2IiBmaWxsPSIjZjU5ZTBiIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAzIDQ0KSBzY2FsZSguMjYpIj48cmVjdCB4PSItNiIgeT0iMCIgd2lkdGg9IjEzMiIgaGVpZ2h0PSIxMjIiIHJ4PSIzMCIgZmlsbD0iIzBiMTQyNiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkgc2NhbGUoMSkiPgogIDxwYXRoIGQ9Ik0zMCA5NSBWMjUgSDUwIEEzNSAzNSAwIDAgMSA1MCA5NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNMzAgOTUgSDEwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNOTIgODMgTDEwNiA5NSBMOTIgMTA3IiBmaWxsPSJub25lIiBzdHJva2U9IiNhNzhiZmEiIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjQ0IiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iIzIyZDNlZSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iIzNiODJmNiIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iI2E3OGJmYSIvPgo8L2c+PC9nPgogIAo8L2c+PC9zdmc+" alt="FLO, maskot D-FLOW">
+  <div class="flo-say">Halo, aku <b>FLO</b>! Aku jaga lini tetap mengalir: aman, tepat varian, tanpa lembur.</div>
+  <div class="scroll-hint">gulir</div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem"><div class="wrap">
+  <span class="eyebrow rv">01 · Kondisi saat ini</span>
+  <h2 class="rv d1">Sepuluh gap yang menahan <span class="grad">daya saing</span></h2>
+  <p class="lead rv d2">Sistem masih berkarakter capability-based: ketidakpastian permintaan dikompensasi dengan stok, lembur, dan pemindahan material mendesak. Bar menunjukkan besar perbaikan yang dibutuhkan.</p>
+  <div class="kgrid" id="kgrid"></div>
+</div></section>
+
+<!-- SIMULATOR -->
+<section id="sim"><div class="wrap">
+  <span class="eyebrow rv">02 · Simulasi lini</span>
+  <h2 class="rv d1">Lihat bedanya: <span style="color:#94a3b8">Kondisi A</span> vs <span class="grad">D-FLOW</span></h2>
+  <p class="lead rv d2">Ganti mode, ubah permintaan, lalu picu kejadian. Smart glove menangkap part salah varian di pos kerja, smart andon memanggil pemimpin regu, dan SafeBand memperingatkan saat operator terlalu dekat dengan forklift.</p>
+
+  <div class="simbox rv d2">
+    <div class="card stage">
+      <div class="toolbar">
+        <div class="seg" id="modeSeg"><span class="pill"></span><button data-m="A">Kondisi A · Push</button><button data-m="B" class="on">D-FLOW · Pull</button></div>
+        <div class="ctl">Demand <input type="range" id="dem" min="-15" max="15" value="0"><span class="val" id="demV">0%</span></div>
+        <div class="ctl">Kecepatan <input type="range" id="spd" min="1" max="4" value="2" style="width:80px"><span class="val" id="spdV">2×</span></div>
+      </div>
+      <div style="position:relative"><canvas id="lineCanvas" width="1000" height="460"></canvas>
+      <img class="flo-sim" id="floSim" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMzEwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjMxMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjJkM2VlIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzNiODJmNiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2E3OGJmYSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxnPgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSIyOTIiIHJ4PSI1OCIgcnk9IjkiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii4yMiIvPgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSIyOTIiIHJ4PSIzNCIgcnk9IjUiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii40NSIvPgogIDxwYXRoIGQ9Ik04MCAxOTAgUTQ2IDE3NiA0MiAxMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFlM2E4YSIgc3Ryb2tlLXdpZHRoPSIyNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTQyIDE0NiBMNDIgMTM3IiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iMjciLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjEyMiIgcj0iMTciIGZpbGw9IiNlOGVlZmIiLz48cGF0aCBkPSJNMTYwIDE5NCBRMTg2IDIxNCAxODQgMjM4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxZTNhOGEiIHN0cm9rZS13aWR0aD0iMjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjE4NCIgY3k9IjI1MiIgcj0iMTkiIGZpbGw9IiNjYmQ1ZTEiLz48cmVjdCB4PSIxNzMiIHk9IjI0MyIgd2lkdGg9IjIyIiBoZWlnaHQ9IjEzIiByeD0iMyIgZmlsbD0iIzFlM2E4YSIvPjxyZWN0IHg9IjE3NyIgeT0iMjQ2IiB3aWR0aD0iOCIgaGVpZ2h0PSI3IiByeD0iMS41IiBmaWxsPSIjZWY0NDQ0Ii8+PHBhdGggZD0iTTE4NCAyNzIgTDE3NiAzMDAgTTE4NCAyNzIgTDE5MiAzMDAiIHN0cm9rZT0iI2VmNDQ0NCIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIuNTUiLz4KICA8IS0tIGJvZHkgLS0+CiAgPHJlY3QgeD0iNjYiIHk9IjE2MCIgd2lkdGg9IjEwOCIgaGVpZ2h0PSIxMTIiIHJ4PSI0NCIgZmlsbD0iIzFlM2E4YSIvPgogIDxyZWN0IHg9IjY2IiB5PSIxNjAiIHdpZHRoPSIxMDgiIGhlaWdodD0iMTEyIiByeD0iNDQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzNiODJmNiIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHJlY3QgeD0iODgiIHk9IjE4NiIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQ0IiByeD0iMTIiIGZpbGw9IiMwYjE0MjYiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHJlY3QgeD0iOTQiIHk9IjE5MiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzE1ODAzZCIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMjEzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJywnTGliZXJhdGlvbiBTYW5zJyxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjEyIiBmaWxsPSIjZmZmIiBsZXR0ZXItc3BhY2luZz0iMSI+RkxPVzwvdGV4dD4KICA8cmVjdCB4PSI5OCIgeT0iMjQ0IiB3aWR0aD0iNDQiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii43Ii8+CiAgPCEtLSBuZWNrIC0tPgogIDxyZWN0IHg9IjEwNiIgeT0iMTUwIiB3aWR0aD0iMjgiIGhlaWdodD0iMTYiIHJ4PSI2IiBmaWxsPSIjMzM0MTU1Ii8+CiAgPCEtLSBoZWFkIC0tPgogIDxyZWN0IHg9IjYyIiB5PSI2OCIgd2lkdGg9IjExNiIgaGVpZ2h0PSI5MiIgcng9IjM4IiBmaWxsPSIjZThlZWZiIi8+CiAgPHJlY3QgeD0iNzYiIHk9Ijg2IiB3aWR0aD0iODgiIGhlaWdodD0iNTgiIHJ4PSIyNiIgZmlsbD0iIzBiMTQyNiIvPgogIDxwYXRoIGQ9Ik05MiAxMTIgcTEwIC0xMiAyMCAwIiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTEyOCAxMTIgcTEwIC0xMiAyMCAwIiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTEwNiAxMjYgcTE0IDEyIDI4IDAiIHN0cm9rZT0iIzIyZDNlZSIgc3Ryb2tlLXdpZHRoPSI1IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSI3MiIgY3k9IjEyOCIgcj0iNiIgZmlsbD0iI2ZkYTRhZiIgb3BhY2l0eT0iLjYiLz48Y2lyY2xlIGN4PSIxNjgiIGN5PSIxMjgiIHI9IjYiIGZpbGw9IiNmZGE0YWYiIG9wYWNpdHk9Ii42Ii8+CiAgPCEtLSBoZWxtZXQgLS0+CiAgPHBhdGggZD0iTTYwIDg0IFE2MCAzNiAxMjAgMzQgUTE4MCAzNiAxODAgODQgWiIgZmlsbD0iI2ZiYmYyNCIvPgogIDxyZWN0IHg9IjUwIiB5PSI3OCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSIxNCIgcng9IjciIGZpbGw9IiNmNTllMGIiLz4KICA8cmVjdCB4PSIxMTQiIHk9IjM2IiB3aWR0aD0iMTIiIGhlaWdodD0iNDQiIHJ4PSI2IiBmaWxsPSIjZjU5ZTBiIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAzIDQ0KSBzY2FsZSguMjYpIj48cmVjdCB4PSItNiIgeT0iMCIgd2lkdGg9IjEzMiIgaGVpZ2h0PSIxMjIiIHJ4PSIzMCIgZmlsbD0iIzBiMTQyNiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkgc2NhbGUoMSkiPgogIDxwYXRoIGQ9Ik0zMCA5NSBWMjUgSDUwIEEzNSAzNSAwIDAgMSA1MCA5NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNMzAgOTUgSDEwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNOTIgODMgTDEwNiA5NSBMOTIgMTA3IiBmaWxsPSJub25lIiBzdHJva2U9IiNhNzhiZmEiIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjQ0IiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iIzIyZDNlZSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iIzNiODJmNiIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iI2E3OGJmYSIvPgo8L2c+PC9nPgogIAo8L2c+PC9zdmc+" alt="FLO"></div>
+      <div class="legend">
+        <span><i style="background:#3b82f6"></i>Varian Innova</span><span><i style="background:#22d3ee"></i>Varian Fortuner</span><span><i style="background:#a78bfa"></i>Varian Zenix HEV</span><span><i style="background:#ef4444"></i>Cacat</span><span><i style="background:#f59e0b;border-radius:50%"></i>Operator</span>
+      </div>
+      <div class="toolbar" style="padding:12px 4px 0;justify-content:flex-start">
+        <button class="chip" id="bDef"><span class="d" style="background:var(--red)"></span>Picu part salah varian</button>
+        <button class="chip" id="bFork"><span class="d" style="background:var(--orange)"></span>Picu forklift mendekat</button>
+        <button class="chip" id="bPause">❚❚ Jeda</button>
+        <button class="chip" id="bReset">↺ Reset</button>
+      </div>
+    </div>
+    <div class="side">
+      <div class="card kpis">
+        <h3>KPI live <em id="clock">Hari 1 · 07:00</em></h3>
+        <div class="kp"><div class="t">Unit selesai</div><div class="n" id="kOut">0</div></div>
+        <div class="kp"><div class="t">First pass yield</div><div class="n" id="kFpy">–</div></div>
+        <div class="kp"><div class="t">WIP</div><div class="n" id="kWip">–</div></div>
+        <div class="kp"><div class="t">Utilisasi gudang</div><div class="n" id="kWh">–</div></div>
+        <div class="kp"><div class="t">Respons andon</div><div class="n" id="kResp">–</div></div>
+        <div class="kp"><div class="t">Near miss</div><div class="n" id="kNm">0</div></div>
+        <div class="kp" style="grid-column:1/-1"><div class="t">Lembur dibutuhkan hari ini</div><div class="n" id="kOt" style="font-size:14px">–</div></div>
+      </div>
+      <div class="card watchwrap">
+        <div class="watch" id="watch"><div class="strap t"></div><div class="strap b"></div><div class="body"><div class="screen" id="wscr"><b>SIAGA</b><p>Smart andon<br>pemimpin regu</p><div class="tm">--:--</div></div></div></div>
+        <div class="log" id="log"></div>
+      </div>
+    </div>
+  </div>
+  <p class="note">Simulasi ilustratif berbasis data simulasi studi kasus (CT 62 vs 58 detik, FPY 97,5% vs ≥99%, demand dasar 820 unit/hari, 55.200 detik kerja/hari). Bukan data aktual TMMIN.</p>
+</div></section>
+
+<!-- ARCH -->
+<section id="arch"><div class="wrap">
+  <span class="eyebrow rv">03 · Good Manufacturing System</span>
+  <h2 class="rv d1">Sembilan elemen, <span class="grad">satu sistem saraf</span></h2>
+  <p class="lead rv d2">TPS tetap menjadi logika; data menjadi sistem sarafnya. Klik setiap elemen untuk melihat rancangan dan perubahannya dari kondisi saat ini.</p>
+  <div class="arch">
+    <div class="card rv d2" style="padding:18px">
+      <svg viewBox="0 0 760 560" id="archSvg"></svg>
+    </div>
+    <div class="card info rv d3" id="info"></div>
+  </div>
+</div></section>
+
+<!-- WEARABLES -->
+<section id="wear" style="background:var(--bg2)"><div class="wrap">
+  <span class="eyebrow rv">04 · Smart wearable & digital</span>
+  <h2 class="rv d1">Teknologi dengan tugas yang jelas, <span class="grad">bukan gimmick</span></h2>
+  <p class="lead rv d2">Setiap perangkat menutup satu akar masalah dan menggerakkan KPI tertentu.</p>
+  <div class="wgrid">
+    <div class="card wc rv d1">
+      <div class="vis"><svg viewBox="0 0 200 200" width="190">
+        <circle class="ring" cx="100" cy="100" r="60" fill="none" stroke="#22d3ee" stroke-width="2"/>
+        <circle class="ring r2" cx="100" cy="100" r="60" fill="none" stroke="#22d3ee" stroke-width="2"/>
+        <circle class="ring r3" cx="100" cy="100" r="60" fill="none" stroke="#22d3ee" stroke-width="2"/>
+        <rect x="80" y="20" width="40" height="160" rx="10" fill="#1c2742"/>
+        <rect x="58" y="66" width="84" height="68" rx="18" fill="#1e3a8a" stroke="#3b82f6" stroke-width="2"/>
+        <circle cx="100" cy="100" r="16" fill="#f59e0b"/><text x="100" y="104" text-anchor="middle" font-size="10" font-weight="700" fill="#06101f" font-family="monospace">UWB</text>
+        <circle cx="70" cy="78" r="4" class="blink" fill="#334155"/>
+      </svg></div>
+      <h3>SafeBand</h3><p>Gelang/rompi dengan tag UWB, sensor gerak (IMU), dan getar haptik.</p>
+      <ul><li>Peringatan proksimitas &lt;3 m ke operator & pengemudi forklift</li><li>Durasi postur berat → saran rotasi pos kerja</li><li>Exoskeleton pasif untuk pos lengan di atas kepala</li></ul>
+      <div class="kpi">KPI: near miss 12 → ≤8/bulan · MH/unit</div>
+    </div>
+    <div class="card wc rv d2">
+      <div class="vis"><svg viewBox="0 0 200 200" width="190">
+        <g fill="#cbd5e1" stroke="#64748b" stroke-width="2">
+          <rect x="62" y="96" width="76" height="80" rx="18"/>
+          <rect x="64" y="40" width="16" height="66" rx="8"/><rect x="83" y="28" width="16" height="78" rx="8"/><rect x="102" y="30" width="16" height="76" rx="8"/><rect x="121" y="44" width="16" height="62" rx="8"/>
+          <rect x="38" y="112" width="26" height="16" rx="8" transform="rotate(-30 50 120)"/>
+        </g>
+        <rect x="72" y="118" width="56" height="34" rx="6" fill="#1e3a8a"/>
+        <rect x="78" y="124" width="22" height="22" rx="3" fill="#ef4444"/>
+        <circle cx="114" cy="135" r="5" class="blink" fill="#334155"/>
+        <rect class="laser" x="40" y="150" width="120" height="3" rx="1.5" fill="#ef4444"/>
+      </svg></div>
+      <h3>Smart Glove Scanner</h3><p>Pemindai di punggung tangan + torsi digital: Jidoka digital per unit.</p>
+      <ul><li>Validasi varian part vs urutan heijunka &lt;0,5 detik</li><li>Unit tidak dapat maju jika torsi belum terverifikasi</li><li>LED + getar sebelum part salah terpasang</li></ul>
+      <div class="kpi">KPI: FPY 97,5% → ≥99% · abnormality</div>
+    </div>
+    <div class="card wc rv d3">
+      <div class="vis"><svg viewBox="0 0 200 200" width="190">
+        <rect x="76" y="6" width="48" height="188" rx="10" fill="#1c2742"/>
+        <rect x="46" y="46" width="108" height="108" rx="30" fill="#020617" stroke="#475569" stroke-width="5"/>
+        <rect class="wscreen" x="58" y="58" width="84" height="84" rx="20" fill="#b91c1c"/>
+        <text x="100" y="92" text-anchor="middle" fill="#fff" font-size="12" font-weight="800" font-family="sans-serif">ANDON</text>
+        <text x="100" y="110" text-anchor="middle" fill="#fff" font-size="9" font-family="sans-serif">Pos 14 · Part</text>
+        <text x="100" y="128" text-anchor="middle" fill="#fff" font-size="11" font-weight="700" font-family="monospace">00:42</text>
+      </svg></div>
+      <h3>Smart Andon Watch</h3><p>Notifikasi jenis masalah + instruksi standar langsung ke pemimpin regu.</p>
+      <ul><li>Info lokasi & jenis masalah dalam ≤5 detik</li><li>Eskalasi otomatis ke pemimpin grup setelah 60 detik</li><li>Semua kejadian otomatis tercatat ke Digital Obeya</li></ul>
+      <div class="kpi">KPI: abnormality 18 → ≤10/minggu · CT</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CALC -->
+<section id="calc"><div class="wrap">
+  <span class="eyebrow rv">05 · Logika kapasitas</span>
+  <h2 class="rv d1">Kenapa targetnya <span class="grad">58 detik</span>?</h2>
+  <p class="lead rv d2">Geser permintaan harian. Pada cycle time 62 detik, puncak +15% memaksa lembur. Pada 58 detik, puncak terpenuhi dalam jam kerja normal.</p>
+  <div class="calc">
+    <div class="card rv d2">
+      <div class="ctl" style="justify-content:space-between">Permintaan harian <span class="val" id="cDp">±0%</span></div>
+      <div class="big-r"><div class="n" id="cD">820</div><div style="color:var(--muted);font-size:13px;text-align:right">unit/hari<br><span id="cT" style="font-family:var(--mono);color:var(--cyan)">takt 67,3 dtk</span></div></div>
+      <input type="range" class="lg" id="cR" min="697" max="943" value="820">
+      <div class="ticks"><span>697 (−15%)</span><span>820</span><span>943 (+15%)</span></div>
+      <div class="gauge"><div class="trk"></div>
+        <div class="mk" id="g62" style="background:#94a3b8"><span style="color:#94a3b8">kap. CT 62</span></div>
+        <div class="mk" id="g58" style="background:#22d3ee"><span style="color:#22d3ee">kap. CT 58</span></div>
+        <div class="dm" id="gD"></div>
+      </div>
+    </div>
+    <div class="card rv d3">
+      <div class="cmp">
+        <div class="cbox"><h4>Kondisi A</h4><div class="ct">CT 62 dtk</div><div class="cap">890</div><div class="ct">unit/hari</div><div class="ot" id="o62">tanpa lembur</div></div>
+        <div class="cbox" style="border-color:#1d4e73"><h4>D-FLOW</h4><div class="ct">CT 58 dtk</div><div class="cap" style="color:var(--cyan)">952</div><div class="ct">unit/hari</div><div class="ot" id="o58">tanpa lembur</div></div>
+      </div>
+      <p class="note" style="margin-top:18px">Kapasitas = 55.200 dtk ÷ CT. Lembur = (permintaan − kapasitas) × CT ÷ 60. Penurunan CT dicapai lewat eliminasi waktu tunggu material dan respons abnormalitas yang lebih cepat, bukan menambah stok.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- IMPACT -->
+<section id="impact" style="background:var(--bg2)"><div class="wrap">
+  <span class="eyebrow rv">06 · Business impact</span>
+  <h2 class="rv d1">Rp11,22 M investasi, <span class="grad">balik modal ±22 bulan</span></h2>
+  <p class="lead rv d2">Estimasi satu lini pilot, 240 hari kerja. Ganti skenario untuk melihat sensitivitas terhadap realisasi manfaat.</p>
+  <div class="imp">
+    <div class="card rv d2">
+      <div class="toolbar" style="padding:0 0 10px">
+        <div style="font-weight:700">Arus kas kumulatif (Rp miliar)</div>
+        <div class="seg" id="scSeg"><span class="pill"></span><button data-s="1" class="on">Basis</button><button data-s="0.7">70%</button><button data-s="0.6">60%</button></div>
+      </div>
+      <svg id="cfChart" viewBox="0 0 640 330"></svg>
+      <div class="mgrid">
+        <div class="m"><div class="v" id="mNpv">8,78</div><div class="l">NPV 3 tahun (Rp M, 10%)</div></div>
+        <div class="m"><div class="v" id="mCum">13,84</div><div class="l">Kumulatif tahun 3 (Rp M)</div></div>
+      </div>
+    </div>
+    <div class="card rv d3">
+      <div style="font-weight:700;margin-bottom:12px">Sumber manfaat tahunan (Rp M)</div>
+      <div class="blist" id="blist"></div>
+      <div class="mgrid" style="margin-top:22px">
+        <div class="m"><div class="v">123%</div><div class="l">ROI 3 tahun</div></div>
+        <div class="m"><div class="v">1,50</div><div class="l">Opex/tahun (Rp M)</div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ROADMAP -->
+<section id="road"><div class="wrap">
+  <span class="eyebrow rv">07 · Implementation roadmap</span>
+  <h2 class="rv d1">Tiga tahap, <span class="grad">gate berbasis KPI</span></h2>
+  <p class="lead rv d2">Investasi tahap berikutnya hanya dibuka jika gate tercapai. People development (Dojo, skill matrix, ADKAR) berjalan paralel sepanjang 24 bulan.</p>
+  <div class="road">
+    <div class="ln"><i id="roadLn"></i></div>
+    <div class="phases">
+      <div class="ph"><div class="dot">01</div><div class="card"><div class="when">Bulan 1–6</div><h3>Pilot</h3><ul><li>VSM & validasi akar masalah</li><li>SafeBand, smart glove, andon di zona bottleneck</li><li>E-kanban 30 part volume tinggi</li><li>Pelatihan Dojo D-FLOW</li></ul><div class="gate">Gate: FPY ≥98,5% · abnormality ≤14/mgg · near miss −15% · adopsi ≥90%</div></div></div>
+      <div class="ph"><div class="dot">02</div><div class="card"><div class="when">Bulan 7–12</div><h3>Evaluation & Standardization</h3><ul><li>Evaluasi KPI vs baseline</li><li>SOP digital & standar kerja baru</li><li>Perluasan ke seluruh pos lini pilot</li><li>Heijunka harian penuh</li></ul><div class="gate">Gate: seluruh target KPI tercapai di lini pilot</div></div></div>
+      <div class="ph"><div class="dot">03</div><div class="card"><div class="when">Bulan 13–24</div><h3>Horizontal Deployment</h3><ul><li>Replikasi ke lini & plant lain</li><li>Integrasi portal pemasok tier-1</li><li>Digital Obeya tingkat plant & digital twin</li></ul><div class="gate">Gate: manfaat ≥80% di lini replikasi · payback ≤24 bulan</div></div></div>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div><div class="brand" style="margin-bottom:14px"><img class="mk" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjJkM2VlIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzNiODJmNiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2E3OGJmYSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjQ4MCIgaGVpZ2h0PSI0ODAiIHJ4PSIxMTIiIGZpbGw9IiMwYjE0MjYiLz4KPHJlY3QgeD0iMTYiIHk9IjE2IiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjQ4MCIgcng9IjExMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjYiIG9wYWNpdHk9Ii41NSIvPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NiAzNikgc2NhbGUoMy42KSI+CiAgPHBhdGggZD0iTTMwIDk1IFYyNSBINTAgQTM1IDM1IDAgMCAxIDUwIDk1IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZykiIHN0cm9rZS13aWR0aD0iMTMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0zMCA5NSBIMTAwIiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjZykiIHN0cm9rZS13aWR0aD0iMTMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik05MiA4MyBMMTA2IDk1IEw5MiAxMDciIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2E3OGJmYSIgc3Ryb2tlLXdpZHRoPSIxMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPGNpcmNsZSBjeD0iNDQiIGN5PSI2MCIgcj0iNS41IiBmaWxsPSIjMjJkM2VlIi8+PGNpcmNsZSBjeD0iNTciIGN5PSI2MCIgcj0iNS41IiBmaWxsPSIjM2I4MmY2Ii8+PGNpcmNsZSBjeD0iNzAiIGN5PSI2MCIgcj0iNS41IiBmaWxsPSIjYTc4YmZhIi8+CjwvZz48L3N2Zz4=" alt="Logo D-FLOW">D-FLOW</div><p>Rancangan Good Manufacturing System berbasis kebutuhan pelanggan dengan integrasi smart wearable untuk memperkuat daya saing PT Toyota Motor Manufacturing Indonesia.</p></div>
+    <div><h4>Tim Fahry Suka Es Karebet</h4><ul><li>Arivianto Al Ghifari Hidayat — Ketua</li><li>Rendra Dita Adisaputra</li><li>Rama Bayuaji Julian Putra</li></ul></div>
+    <div><h4>Kompetisi</h4><ul><li>Business Case Competition</li><li>INFINITY Dynamic Fusion 2026</li><li>Tema: Strategic Sustainable Innovation</li></ul></div>
+  </div>
+  <p class="disc">Prototype konsep untuk keperluan kompetisi. Seluruh angka berasal dari data simulasi studi kasus dan asumsi tim, bukan data aktual perusahaan.</p>
+</div></footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const fmt=(n,d=0)=>n.toLocaleString('id-ID',{minimumFractionDigits:d,maximumFractionDigits:d});
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* nav */
+const nav=$('#nav');
+addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>30),{passive:true});
+const secs=$$('section[id]');
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){$$('.navl a').forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>spy.observe(s));
+
+/* reveal + triggers */
+const onIn=new Map();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');const f=onIn.get(e.target);if(f){f();onIn.delete(e.target)}io.unobserve(e.target)}}),{threshold:.18});
+const watchIn=(el,f)=>{onIn.set(el,f);io.observe(el)};
+$$('.rv').forEach(el=>io.observe(el));
+
+/* count up */
+function countUp(el){const t=+el.dataset.count,d=+(el.dataset.dec||0),pre=el.dataset.pre||'',suf=el.dataset.suf||'';const t0=performance.now(),D=1800;
+  const st=n=>{const p=Math.min(1,(n-t0)/D),e=1-Math.pow(1-p,4);el.textContent=pre+fmt(t*e,d)+suf;if(p<1)requestAnimationFrame(st)};requestAnimationFrame(st)}
+setTimeout(()=>$$('[data-count]').forEach(countUp),700);
+
+/* HERO canvas: particles flowing on an infinity path */
+(()=>{const c=$('#heroCanvas'),x=c.getContext('2d');let W,H,P=[];
+  const rs=()=>{W=c.width=c.offsetWidth*devicePixelRatio;H=c.height=c.offsetHeight*devicePixelRatio};rs();addEventListener('resize',rs);
+  for(let i=0;i<260;i++)P.push({t:Math.random()*Math.PI*2,s:.0012+Math.random()*.0022,o:(Math.random()-.5)*60,r:Math.random()*1.8+.4,h:Math.random()});
+  const draw=()=>{x.clearRect(0,0,W,H);const cx=W*.68,cy=H*.5,A=Math.min(W*.3,H*.55);
+    x.globalCompositeOperation='lighter';
+    for(const p of P){p.t+=p.s;const s=Math.sin(p.t),k=1+Math.cos(p.t)**2;const px=cx+A*Math.cos(p.t)/k+p.o*devicePixelRatio,py=cy+A*s*Math.cos(p.t)/k+p.o*.5*devicePixelRatio;
+      x.beginPath();x.arc(px,py,p.r*devicePixelRatio,0,7);x.fillStyle=p.h<.5?`rgba(34,211,238,${.35+p.h})`:`rgba(129,140,248,${.2+p.h*.5})`;x.fill()}
+    x.globalCompositeOperation='source-over';if(!RM)requestAnimationFrame(draw)};draw()})();
+
+/* PROBLEM cards */
+const G=[['Respons variasi demand','±15% → lembur','tanpa lembur',90,'D'],['First pass yield','97,5%','≥99,0%',60,'Q'],['Abnormality','18/mgg','≤10',44,'Q'],['Near miss','12/bln','≤8',30,'S'],['Work in process','1,8 hari','≤1,0',44,'C'],['Utilisasi gudang','88%','≤75%',15,'C'],['Cycle time','62 dtk','≤58',6.5,'P'],['Man-hour/unit','2,40','≤2,15',10.4,'P'],['Pencatatan manual','120 mnt','≤60',50,'P'],['Urgent material','9/mgg','≤4',56,'D']];
+const DC={S:'#ef4444',Q:'#f59e0b',P:'#3b82f6',C:'#22c55e',D:'#a78bfa'};
+$('#kgrid').innerHTML=G.map((g,i)=>`<div class="kc rv d${i%4+1}"><span class="dim" style="background:${DC[g[4]]}22;color:${DC[g[4]]}">${g[4]}</span><h4>${g[0]}</h4><div class="row"><span class="now">${g[1]}</span><span class="arr">→</span><span class="tgt">${g[2]}</span></div><div class="bar"><i data-w="${g[3]}"></i></div><small>${g[0]==='Respons variasi demand'?'kurang ±53 unit saat puncak':'perbaikan '+fmt(g[3],g[3]%1?1:0)+'%'}</small></div>`).join('');
+$$('#kgrid .kc').forEach(el=>{io.observe(el);watchIn(el,()=>{const b=el.querySelector('i');setTimeout(()=>b.style.width=Math.min(100,b.dataset.w*1.4)+'%',200)})});
+
+/* SEGMENTED control helper */
+function seg(el,cb){const pill=el.querySelector('.pill'),bs=[...el.querySelectorAll('button')];document.fonts&&document.fonts.ready.then(()=>mv(el.querySelector('.on')));
+  const mv=b=>{pill.style.left=b.offsetLeft+'px';pill.style.width=b.offsetWidth+'px';bs.forEach(x=>x.classList.toggle('on',x===b))};
+  bs.forEach(b=>b.onclick=()=>{mv(b);cb(b)});requestAnimationFrame(()=>mv(el.querySelector('.on')));addEventListener('resize',()=>mv(el.querySelector('.on')));return mv}
+
+/* ================= LINE SIMULATOR ================= */
+const cv=$('#lineCanvas'),cx=cv.getContext('2d');
+const VAR=['#3b82f6','#22d3ee','#a78bfa'],VN=['Innova','Fortuner','Zenix HEV'];
+const ST=[{n:'Body',x:110},{n:'Paint',x:250},{n:'Trim',x:390},{n:'Chassis',x:530},{n:'Final',x:670},{n:'Inspeksi',x:810}];
+const LY=150, GLOVE=2; // glove-scan station index (Trim)
+let S;
+function reset(){S={mode:S?S.mode:'B',dem:S?S.dem:0,spd:S?S.spd:2,paused:false,t:0,units:[],spawnAcc:0,seq:0,done:0,def:0,caught:0,resp:[],nm:0,fork:{x:120,dir:1,wait:0,force:0},ops:[{x:320,y:250,ph:0},{x:600,y:250,ph:2},{x:460,y:285,ph:4}],alertT:0,halt:null,wh:S&&S.mode==='A'?.86:.72,rework:[],flashes:[],ldSeq:0};
+  logEl.innerHTML='';log('Simulasi dimulai · mode '+(S.mode==='B'?'D-FLOW (pull)':'Kondisi A (push)'),'b');setWatch('idle')}
+const logEl=$('#log');
+function log(t,c=''){const d=document.createElement('div');d.className=c;d.innerHTML=`<span style="font-family:var(--mono);color:var(--dim)">${clockStr()}</span> ${t}`;logEl.prepend(d);while(logEl.children.length>8)logEl.lastChild.remove()}
+const WSEC=55200, BASE=820;
+const CT=()=>S.mode==='B'?58:62;
+const demand=()=>Math.round(BASE*(1+S.dem/100));
+function clockStr(){if(!S)return'';const m=Math.floor(S.t/60)%(16*60),h=7+Math.floor(m/60);return String(h).padStart(2,'0')+':'+String(m%60).padStart(2,'0')}
+// sim speed: 1 real second = 40*spd sim seconds
+function spawnVariant(){
+  if(S.mode==='B'){const pat=[0,1,0,2,0,1];return pat[S.seq++%pat.length]}
+  const b=Math.floor(S.seq++/8)%3;return b}
+function step(dt){
+  const simDt=dt*40*S.spd; S.t+=simDt;
+  // spawn
+  const interval=S.mode==='B'?Math.max(CT(),WSEC/demand()):CT();
+  S.spawnAcc=Math.min(S.spawnAcc+simDt,interval*2);
+  const lastU=S.units.reduce((m,u)=>Math.min(m,u.x),1e9);
+  if(S.spawnAcc>=interval&&lastU>62){S.spawnAcc-=interval;
+    const v=spawnVariant();const pd=S.mode==='B'?.010:.025;
+    S.units.push({x:30,v,def:Math.random()<pd,st:'run',id:++S.ldSeq,hold:0});}
+  // move: pixel speed so a unit takes ~ (line length) at 1 station per CT
+  const pxPerSimSec=140/CT();
+  const sorted=S.units.slice().sort((a,b)=>b.x-a.x);
+  let frontX=1e9;
+  for(const u of sorted){
+    let mv=pxPerSimSec*simDt;
+    if(S.halt&&S.halt.u!==u&&u.x<S.halt.u.x)mv=Math.min(mv,Math.max(0,S.halt.u.x-34-u.x));
+    if(u.hold>0){u.hold-=dt;mv=0}
+    // A: push creates queue before inspection (WIP buffer) when a rework blocks
+    const gap=u.x+mv>frontX-30?Math.max(0,frontX-30-u.x):mv;
+    if(S.halt&&S.halt.u===u)mv=0; else mv=gap;
+    // glove detection in D-FLOW
+    if(S.mode==='B'&&u.def&&!u.chk&&u.x>=ST[GLOVE].x-6){u.chk=1;u.x=ST[GLOVE].x-6;S.halt={u,t:0};S.caught++;
+      setWatch('alert',`Pos ${ST[GLOVE].n}<br>Part salah varian<br>unit #${u.id}`);log(`Smart glove: part salah varian di pos ${ST[GLOVE].n} (unit #${u.id}) · unit ditahan`,'r');
+      S.flashes.push({x:ST[GLOVE].x,c:'#ef4444',t:0})}
+    u.x+=mv; frontX=u.x;
+    if(u.x>=ST[5].x+50){ // exits inspection
+      if(u.def){ if(S.mode==='A'){S.def++;S.rework.push({x:u.x,y:LY,v:u.v,t:0});log(`Inspeksi akhir: cacat lolos dari pos kerja (unit #${u.id}) → repair`,'r');S.resp.push(240+Math.random()*120)} }
+      S.done++; u.gone=1;}
+  }
+  S.units=S.units.filter(u=>!u.gone);
+  // resolve halt (andon response)
+  if(S.halt){S.halt.t+=simDt; const need=45+Math.random()*10;
+    if(S.halt.t>need){const u=S.halt.u;u.def=false;S.resp.push(S.halt.t);log(`Pemimpin regu merespons dalam ${Math.round(S.halt.t)} dtk · part diganti via e-kanban`,'g');setWatch('ok',`Selesai<br>respons ${Math.round(S.halt.t)} dtk<br>tercatat ke Obeya`);S.halt=null;setTimeout(()=>setWatch('idle'),2200)}}
+  // warehouse drift
+  const tgtWh=S.mode==='A'?(.86+Math.max(0,-S.dem)/100):(.70+Math.max(0,S.dem)/300);
+  S.wh+=(tgtWh-S.wh)*dt*.4;
+  // forklift & operators
+  const f=S.fork; if(f.wait>0)f.wait-=dt; else {f.x+=f.dir*dt*90*S.spd*.6;if(f.x>900){f.dir=-1}if(f.x<80){f.dir=1}}
+  S.ops.forEach((o,i)=>{o.ph+=dt*S.spd*.6;if(!(f.force>0&&i===0))o.y=255+Math.sin(o.ph)*[44,40,74][i];o.x+=Math.cos(o.ph*.7+i)*dt*8});
+  if(f.force>0){f.force-=dt;const o=S.ops[0];o.y+=(368-o.y)*Math.min(1,dt*3);o.x+=(f.x+f.dir*70-o.x)*Math.min(1,dt*1.5)}
+  S.alertT-=dt;
+  for(const o of S.ops){const d=Math.hypot(o.x-f.x,o.y-370);
+    if(d<62&&S.alertT<=0){S.alertT=3;
+      if(S.mode==='B'){f.wait=1.6;log('SafeBand: operator 2,8 m dari forklift · getar haptik + forklift berhenti','o');setWatch('safe','SafeBand<br>Proksimitas 2,8 m<br>forklift berhenti');S.flashes.push({x:o.x,y:o.y,c:'#f59e0b',t:0,ring:1});setTimeout(()=>{if(!S.halt)setWatch('idle')},2000)}
+      else{S.nm++;log('Near miss: operator nyaris tertabrak forklift (tidak ada peringatan)','r');S.flashes.push({x:o.x,y:o.y,c:'#ef4444',t:0,ring:1})}}}
+  S.rework.forEach(r=>r.t+=dt);S.rework=S.rework.filter(r=>r.t<2.5);
+  S.flashes.forEach(fl=>fl.t+=dt);S.flashes=S.flashes.filter(fl=>fl.t<1.6);
+}
+function rr(x,y,w,h,r){cx.beginPath();cx.roundRect?cx.roundRect(x,y,w,h,r):cx.rect(x,y,w,h)}
+function car(x,y,c,def,glow){
+  cx.save();cx.translate(x,y);
+  if(glow){cx.shadowColor=c;cx.shadowBlur=14}
+  cx.fillStyle=def&&S.mode==='A'?c:c;rr(-16,-9,32,14,4);cx.fill();rr(-9,-15,18,8,3);cx.fill();
+  cx.shadowBlur=0;cx.fillStyle='#0b1220';cx.beginPath();cx.arc(-9,6,3.5,0,7);cx.arc(9,6,3.5,0,7);cx.fill();
+  if(def&&S.mode==='A'){cx.strokeStyle='#ef4444';cx.lineWidth=2;cx.setLineDash([3,3]);rr(-19,-18,38,28,6);cx.stroke();cx.setLineDash([])}
+  cx.restore()}
+function draw(){
+  const W=1000,H=460;cx.clearRect(0,0,W,H);
+  // grid
+  cx.strokeStyle='rgba(59,130,246,.06)';cx.lineWidth=1;for(let x=0;x<W;x+=25){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke()}for(let y=0;y<H;y+=25){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke()}
+  // header labels
+  cx.font='600 12px Plus Jakarta Sans, sans-serif';cx.fillStyle='#8fa3c7';
+  cx.fillText(S.mode==='B'?'HEIJUNKA · mix per jam':'JADWAL BATCH · per 8 unit',20,28);
+  // heijunka strip
+  const pat=S.mode==='B'?[0,1,0,2,0,1,0,1,0,2,0,1]:[0,0,0,0,0,0,0,0,1,1,1,1];
+  pat.forEach((v,i)=>{cx.fillStyle=VAR[v];cx.globalAlpha=.85;rr(220+i*22,16,18,16,4);cx.fill()});cx.globalAlpha=1;
+  // conveyor
+  const off=(S.t*140/CT()/40)%20;
+  cx.fillStyle='#0f1d3a';rr(20,LY-4,W-40,28,8);cx.fill();
+  cx.strokeStyle='#1f3358';cx.lineWidth=2;for(let x=20-off;x<W-20;x+=20){if(x<20)continue;cx.beginPath();cx.moveTo(x,LY+20);cx.lineTo(x+8,LY+20);cx.stroke()}
+  // stations
+  ST.forEach((s,i)=>{const halted=S.halt&&i===GLOVE;
+    cx.fillStyle=halted?'rgba(239,68,68,.14)':'rgba(59,130,246,.07)';cx.strokeStyle=halted?'#ef4444':'#25406e';cx.lineWidth=1.5;rr(s.x-40,LY-62,80,104,10);cx.fill();cx.stroke();
+    cx.fillStyle='#c7d4ee';cx.font='700 12px Plus Jakarta Sans, sans-serif';cx.textAlign='center';cx.fillText(s.n,s.x,LY-44);
+    // andon light
+    const on=halted&&Math.floor(performance.now()/250)%2;cx.beginPath();cx.arc(s.x+30,LY-50,5,0,7);cx.fillStyle=halted?(on?'#ef4444':'#7f1d1d'):(S.mode==='B'?'#14532d':'#1f2937');cx.fill();
+    if(S.mode==='B'&&i===GLOVE){cx.font='600 9.5px Plus Jakarta Sans, sans-serif';cx.fillStyle='#22d3ee';cx.fillText('smart glove',s.x,LY+56)}
+  });cx.textAlign='left';
+  // WIP buffer for mode A (pile before inspection & in warehouse)
+  // units
+  for(const u of S.units){car(u.x,LY+4,VAR[u.v],u.def,S.halt&&S.halt.u===u)}
+  // rework (A)
+  S.rework.forEach(r=>{cx.globalAlpha=1-r.t/2.5;car(r.x-10,LY+4+r.t*40,'#ef4444',false,true);cx.globalAlpha=1;cx.fillStyle='#fca5a5';cx.font='600 10px Plus Jakarta Sans, sans-serif';cx.fillText('→ repair',r.x+10,LY+r.t*40)});
+  // warehouse
+  cx.fillStyle='#8fa3c7';cx.font='600 11px Plus Jakarta Sans, sans-serif';cx.fillText('GUDANG',890,LY+80);
+  cx.strokeStyle='#25406e';rr(890,LY+88,90,90,8);cx.stroke();
+  const wh=Math.max(.3,Math.min(.97,S.wh));const fh=86*wh;cx.fillStyle=wh>.8?'rgba(239,68,68,.35)':'rgba(34,197,94,.3)';rr(892,LY+176-fh,86,fh,6);cx.fill();
+  cx.fillStyle='#e8eefb';cx.font='700 15px JetBrains Mono, monospace';cx.textAlign='center';cx.fillText(Math.round(wh*100)+'%',935,LY+140);cx.textAlign='left';
+  // supermarket (B)
+  if(S.mode==='B'){cx.fillStyle='#8fa3c7';cx.font='600 11px Plus Jakarta Sans, sans-serif';cx.fillText('SUPERMARKET · e-kanban RFID',300,LY+92);
+    for(let i=0;i<6;i++){const lvl=.45+.4*Math.abs(Math.sin(S.t/900+i));cx.strokeStyle='#7c4a12';rr(300+i*42,LY+100,34,26,4);cx.stroke();cx.fillStyle='rgba(245,158,11,.5)';rr(300+i*42,LY+126-26*lvl,34,26*lvl,4);cx.fill()}
+    // milk run dot
+    const mx=300+((S.t/6)%260);cx.fillStyle='#f59e0b';cx.beginPath();cx.arc(mx,LY+136,4,0,7);cx.fill()}
+  else{cx.fillStyle='#8fa3c7';cx.font='600 11px Plus Jakarta Sans, sans-serif';cx.fillText('STOK BATCH · kanban kartu',300,LY+92);
+    for(let i=0;i<6;i++){cx.fillStyle='rgba(148,163,184,.35)';rr(300+i*42,LY+100,34,26,4);cx.fill()}}
+  // aisle
+  cx.fillStyle='rgba(148,163,184,.08)';rr(20,350,W-40,40,8);cx.fill();cx.fillStyle='#5d7096';cx.font='600 10px Plus Jakarta Sans, sans-serif';cx.fillText('JALUR FORKLIFT',28,346);
+  // forklift
+  const f=S.fork;cx.save();cx.translate(f.x,370);cx.scale(f.dir,1);cx.fillStyle='#f59e0b';rr(-20,-12,32,20,4);cx.fill();cx.fillStyle='#1f2937';rr(12,-22,4,30,1);cx.fill();rr(16,4,16,3,1);cx.fill();cx.fillStyle='#0b1220';cx.beginPath();cx.arc(-12,9,5,0,7);cx.arc(6,9,5,0,7);cx.fill();cx.restore();
+  if(f.wait>0){cx.fillStyle='#fcd34d';cx.font='700 10px Plus Jakarta Sans, sans-serif';cx.textAlign='center';cx.fillText('BERHENTI',f.x,345);cx.textAlign='left'}
+  // operators
+  S.ops.forEach(o=>{if(S.mode==='B'){cx.strokeStyle='rgba(34,211,238,.35)';cx.lineWidth=1;cx.beginPath();cx.arc(o.x,o.y,14+4*Math.sin(performance.now()/300),0,7);cx.stroke()}
+    cx.fillStyle='#f59e0b';cx.beginPath();cx.arc(o.x,o.y,6,0,7);cx.fill();cx.fillStyle='#fde68a';cx.beginPath();cx.arc(o.x,o.y-9,4,0,7);cx.fill()});
+  // flashes
+  S.flashes.forEach(fl=>{const p=fl.t/1.6;cx.strokeStyle=fl.c;cx.globalAlpha=1-p;cx.lineWidth=3;cx.beginPath();cx.arc(fl.x,fl.y||LY,10+p*60,0,7);cx.stroke();cx.globalAlpha=1});
+  // mode badge
+  cx.font='700 11px JetBrains Mono, monospace';cx.fillStyle=S.mode==='B'?'#22d3ee':'#94a3b8';cx.textAlign='right';cx.fillText((S.mode==='B'?'D-FLOW':'KONDISI A')+' · CT '+CT()+' dtk',W-20,28);cx.textAlign='left';
+  if(S.paused){cx.fillStyle='rgba(7,13,26,.55)';cx.fillRect(0,0,W,H);cx.fillStyle='#e8eefb';cx.font='800 22px Plus Jakarta Sans, sans-serif';cx.textAlign='center';cx.fillText('JEDA',W/2,H/2);cx.textAlign='left'}
+}
+const FLO={happy:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMzEwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjMxMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjJkM2VlIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzNiODJmNiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2E3OGJmYSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxnPgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSIyOTIiIHJ4PSI1OCIgcnk9IjkiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii4yMiIvPgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSIyOTIiIHJ4PSIzNCIgcnk9IjUiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii40NSIvPgogIDxwYXRoIGQ9Ik04MCAxOTAgUTQ2IDE3NiA0MiAxMzQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFlM2E4YSIgc3Ryb2tlLXdpZHRoPSIyNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTQyIDE0NiBMNDIgMTM3IiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iMjciLz48Y2lyY2xlIGN4PSI0MiIgY3k9IjEyMiIgcj0iMTciIGZpbGw9IiNlOGVlZmIiLz48cGF0aCBkPSJNMTYwIDE5NCBRMTg2IDIxNCAxODQgMjM4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxZTNhOGEiIHN0cm9rZS13aWR0aD0iMjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjE4NCIgY3k9IjI1MiIgcj0iMTkiIGZpbGw9IiNjYmQ1ZTEiLz48cmVjdCB4PSIxNzMiIHk9IjI0MyIgd2lkdGg9IjIyIiBoZWlnaHQ9IjEzIiByeD0iMyIgZmlsbD0iIzFlM2E4YSIvPjxyZWN0IHg9IjE3NyIgeT0iMjQ2IiB3aWR0aD0iOCIgaGVpZ2h0PSI3IiByeD0iMS41IiBmaWxsPSIjZWY0NDQ0Ii8+PHBhdGggZD0iTTE4NCAyNzIgTDE3NiAzMDAgTTE4NCAyNzIgTDE5MiAzMDAiIHN0cm9rZT0iI2VmNDQ0NCIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIuNTUiLz4KICA8IS0tIGJvZHkgLS0+CiAgPHJlY3QgeD0iNjYiIHk9IjE2MCIgd2lkdGg9IjEwOCIgaGVpZ2h0PSIxMTIiIHJ4PSI0NCIgZmlsbD0iIzFlM2E4YSIvPgogIDxyZWN0IHg9IjY2IiB5PSIxNjAiIHdpZHRoPSIxMDgiIGhlaWdodD0iMTEyIiByeD0iNDQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzNiODJmNiIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHJlY3QgeD0iODgiIHk9IjE4NiIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQ0IiByeD0iMTIiIGZpbGw9IiMwYjE0MjYiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHJlY3QgeD0iOTQiIHk9IjE5MiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzE1ODAzZCIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMjEzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJywnTGliZXJhdGlvbiBTYW5zJyxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjEyIiBmaWxsPSIjZmZmIiBsZXR0ZXItc3BhY2luZz0iMSI+RkxPVzwvdGV4dD4KICA8cmVjdCB4PSI5OCIgeT0iMjQ0IiB3aWR0aD0iNDQiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii43Ii8+CiAgPCEtLSBuZWNrIC0tPgogIDxyZWN0IHg9IjEwNiIgeT0iMTUwIiB3aWR0aD0iMjgiIGhlaWdodD0iMTYiIHJ4PSI2IiBmaWxsPSIjMzM0MTU1Ii8+CiAgPCEtLSBoZWFkIC0tPgogIDxyZWN0IHg9IjYyIiB5PSI2OCIgd2lkdGg9IjExNiIgaGVpZ2h0PSI5MiIgcng9IjM4IiBmaWxsPSIjZThlZWZiIi8+CiAgPHJlY3QgeD0iNzYiIHk9Ijg2IiB3aWR0aD0iODgiIGhlaWdodD0iNTgiIHJ4PSIyNiIgZmlsbD0iIzBiMTQyNiIvPgogIDxwYXRoIGQ9Ik05MiAxMTIgcTEwIC0xMiAyMCAwIiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTEyOCAxMTIgcTEwIC0xMiAyMCAwIiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTEwNiAxMjYgcTE0IDEyIDI4IDAiIHN0cm9rZT0iIzIyZDNlZSIgc3Ryb2tlLXdpZHRoPSI1IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSI3MiIgY3k9IjEyOCIgcj0iNiIgZmlsbD0iI2ZkYTRhZiIgb3BhY2l0eT0iLjYiLz48Y2lyY2xlIGN4PSIxNjgiIGN5PSIxMjgiIHI9IjYiIGZpbGw9IiNmZGE0YWYiIG9wYWNpdHk9Ii42Ii8+CiAgPCEtLSBoZWxtZXQgLS0+CiAgPHBhdGggZD0iTTYwIDg0IFE2MCAzNiAxMjAgMzQgUTE4MCAzNiAxODAgODQgWiIgZmlsbD0iI2ZiYmYyNCIvPgogIDxyZWN0IHg9IjUwIiB5PSI3OCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSIxNCIgcng9IjciIGZpbGw9IiNmNTllMGIiLz4KICA8cmVjdCB4PSIxMTQiIHk9IjM2IiB3aWR0aD0iMTIiIGhlaWdodD0iNDQiIHJ4PSI2IiBmaWxsPSIjZjU5ZTBiIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAzIDQ0KSBzY2FsZSguMjYpIj48cmVjdCB4PSItNiIgeT0iMCIgd2lkdGg9IjEzMiIgaGVpZ2h0PSIxMjIiIHJ4PSIzMCIgZmlsbD0iIzBiMTQyNiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkgc2NhbGUoMSkiPgogIDxwYXRoIGQ9Ik0zMCA5NSBWMjUgSDUwIEEzNSAzNSAwIDAgMSA1MCA5NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNMzAgOTUgSDEwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNOTIgODMgTDEwNiA5NSBMOTIgMTA3IiBmaWxsPSJub25lIiBzdHJva2U9IiNhNzhiZmEiIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjQ0IiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iIzIyZDNlZSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iIzNiODJmNiIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iI2E3OGJmYSIvPgo8L2c+PC9nPgogIAo8L2c+PC9zdmc+',alert:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMzEwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjMxMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjJkM2VlIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzNiODJmNiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2E3OGJmYSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxnPgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSIyOTIiIHJ4PSI1OCIgcnk9IjkiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii4yMiIvPgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSIyOTIiIHJ4PSIzNCIgcnk9IjUiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii40NSIvPgogIDxwYXRoIGQ9Ik04MCAxOTIgUTQ2IDE5MiAzMiAxNzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFlM2E4YSIgc3Ryb2tlLXdpZHRoPSIyNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTM4IDE4MCBMMzMgMTcyIiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iMjciLz48Y2lyY2xlIGN4PSIyOCIgY3k9IjE2MCIgcj0iMTciIGZpbGw9IiNlOGVlZmIiLz48cGF0aCBkPSJNMTYwIDE5NCBRMTg2IDIxNCAxODQgMjM4IiBmaWxsPSJub25lIiBzdHJva2U9IiMxZTNhOGEiIHN0cm9rZS13aWR0aD0iMjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjE4NCIgY3k9IjI1MiIgcj0iMTkiIGZpbGw9IiNjYmQ1ZTEiLz48cmVjdCB4PSIxNzMiIHk9IjI0MyIgd2lkdGg9IjIyIiBoZWlnaHQ9IjEzIiByeD0iMyIgZmlsbD0iIzFlM2E4YSIvPjxyZWN0IHg9IjE3NyIgeT0iMjQ2IiB3aWR0aD0iOCIgaGVpZ2h0PSI3IiByeD0iMS41IiBmaWxsPSIjZWY0NDQ0Ii8+PHBhdGggZD0iTTE4NCAyNzIgTDE3NiAzMDAgTTE4NCAyNzIgTDE5MiAzMDAiIHN0cm9rZT0iI2VmNDQ0NCIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIuNTUiLz4KICA8IS0tIGJvZHkgLS0+CiAgPHJlY3QgeD0iNjYiIHk9IjE2MCIgd2lkdGg9IjEwOCIgaGVpZ2h0PSIxMTIiIHJ4PSI0NCIgZmlsbD0iIzFlM2E4YSIvPgogIDxyZWN0IHg9IjY2IiB5PSIxNjAiIHdpZHRoPSIxMDgiIGhlaWdodD0iMTEyIiByeD0iNDQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzNiODJmNiIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHJlY3QgeD0iODgiIHk9IjE4NiIgd2lkdGg9IjY0IiBoZWlnaHQ9IjQ0IiByeD0iMTIiIGZpbGw9IiMwYjE0MjYiIHN0cm9rZT0iIzMzNDE1NSIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHJlY3QgeD0iOTQiIHk9IjE5MiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iI2I5MWMxYyIvPgogIDx0ZXh0IHg9IjEyMCIgeT0iMjEzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJywnTGliZXJhdGlvbiBTYW5zJyxBcmlhbCxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iODAwIiBmb250LXNpemU9IjEyIiBmaWxsPSIjZmZmIiBsZXR0ZXItc3BhY2luZz0iMSI+QU5ET048L3RleHQ+CiAgPHJlY3QgeD0iOTgiIHk9IjI0NCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjgiIHJ4PSI0IiBmaWxsPSIjMjJkM2VlIiBvcGFjaXR5PSIuNyIvPgogIDwhLS0gbmVjayAtLT4KICA8cmVjdCB4PSIxMDYiIHk9IjE1MCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjE2IiByeD0iNiIgZmlsbD0iIzMzNDE1NSIvPgogIDwhLS0gaGVhZCAtLT4KICA8cmVjdCB4PSI2MiIgeT0iNjgiIHdpZHRoPSIxMTYiIGhlaWdodD0iOTIiIHJ4PSIzOCIgZmlsbD0iI2U4ZWVmYiIvPgogIDxyZWN0IHg9Ijc2IiB5PSI4NiIgd2lkdGg9Ijg4IiBoZWlnaHQ9IjU4IiByeD0iMjYiIGZpbGw9IiMzYjBkMTIiLz4KICA8cmVjdCB4PSI5NCIgeT0iMTAwIiB3aWR0aD0iMTQiIGhlaWdodD0iMjAiIHJ4PSI3IiBmaWxsPSIjZmNhNWE1Ii8+PHJlY3QgeD0iMTMyIiB5PSIxMDAiIHdpZHRoPSIxNCIgaGVpZ2h0PSIyMCIgcng9IjciIGZpbGw9IiNmY2E1YTUiLz48ZWxsaXBzZSBjeD0iMTIwIiBjeT0iMTMwIiByeD0iNyIgcnk9IjUiIGZpbGw9IiNmY2E1YTUiLz4KICA8Y2lyY2xlIGN4PSI3MiIgY3k9IjEyOCIgcj0iNiIgZmlsbD0iI2ZkYTRhZiIgb3BhY2l0eT0iLjYiLz48Y2lyY2xlIGN4PSIxNjgiIGN5PSIxMjgiIHI9IjYiIGZpbGw9IiNmZGE0YWYiIG9wYWNpdHk9Ii42Ii8+CiAgPCEtLSBoZWxtZXQgLS0+CiAgPHBhdGggZD0iTTYwIDg0IFE2MCAzNiAxMjAgMzQgUTE4MCAzNiAxODAgODQgWiIgZmlsbD0iI2ZiYmYyNCIvPgogIDxyZWN0IHg9IjUwIiB5PSI3OCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSIxNCIgcng9IjciIGZpbGw9IiNmNTllMGIiLz4KICA8cmVjdCB4PSIxMTQiIHk9IjM2IiB3aWR0aD0iMTIiIGhlaWdodD0iNDQiIHJ4PSI2IiBmaWxsPSIjZjU5ZTBiIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAzIDQ0KSBzY2FsZSguMjYpIj48cmVjdCB4PSItNiIgeT0iMCIgd2lkdGg9IjEzMiIgaGVpZ2h0PSIxMjIiIHJ4PSIzMCIgZmlsbD0iIzBiMTQyNiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkgc2NhbGUoMSkiPgogIDxwYXRoIGQ9Ik0zMCA5NSBWMjUgSDUwIEEzNSAzNSAwIDAgMSA1MCA5NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNMzAgOTUgSDEwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNOTIgODMgTDEwNiA5NSBMOTIgMTA3IiBmaWxsPSJub25lIiBzdHJva2U9IiNhNzhiZmEiIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjQ0IiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iIzIyZDNlZSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iIzNiODJmNiIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iI2E3OGJmYSIvPgo8L2c+PC9nPgogIDxnPjxjaXJjbGUgY3g9IjE5NiIgY3k9IjQ0IiByPSIyMiIgZmlsbD0iI2VmNDQ0NCIvPjx0ZXh0IHg9IjE5NiIgeT0iNTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInUGx1cyBKYWthcnRhIFNhbnMnLCdMaWJlcmF0aW9uIFNhbnMnLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMzAiIGZpbGw9IiNmZmYiPiE8L3RleHQ+PC9nPgo8L2c+PC9zdmc+',ok:'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMzEwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjMxMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjJkM2VlIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iIzNiODJmNiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2E3OGJmYSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxnPgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSIyOTIiIHJ4PSI1OCIgcnk9IjkiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii4yMiIvPgogIDxlbGxpcHNlIGN4PSIxMjAiIGN5PSIyOTIiIHJ4PSIzNCIgcnk9IjUiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii40NSIvPgogIDxwYXRoIGQ9Ik04MCAxOTQgUTU0IDIxNCA1NiAyNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFlM2E4YSIgc3Ryb2tlLXdpZHRoPSIyNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTU2IDIzMiBMNTYgMjQxIiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iMjciLz48Y2lyY2xlIGN4PSI1NiIgY3k9IjI1NCIgcj0iMTciIGZpbGw9IiNlOGVlZmIiLz48cGF0aCBkPSJNMTYwIDE5MiBRMTk2IDE3OCAxOTggMTQwIiBmaWxsPSJub25lIiBzdHJva2U9IiMxZTNhOGEiIHN0cm9rZS13aWR0aD0iMjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjIwNiIgY3k9IjExMiIgcj0iMjYiIGZpbGw9IiMyMmM1NWUiIHN0cm9rZT0iI2U4ZWVmYiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHBhdGggZD0iTTE5NCAxMTIgbDggOSBsMTUgLTE4IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGNpcmNsZSBjeD0iMTk4IiBjeT0iMTM4IiByPSIxNiIgZmlsbD0iI2NiZDVlMSIvPgogIDwhLS0gYm9keSAtLT4KICA8cmVjdCB4PSI2NiIgeT0iMTYwIiB3aWR0aD0iMTA4IiBoZWlnaHQ9IjExMiIgcng9IjQ0IiBmaWxsPSIjMWUzYThhIi8+CiAgPHJlY3QgeD0iNjYiIHk9IjE2MCIgd2lkdGg9IjEwOCIgaGVpZ2h0PSIxMTIiIHJ4PSI0NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjM2I4MmY2IiBzdHJva2Utd2lkdGg9IjMiLz4KICA8cmVjdCB4PSI4OCIgeT0iMTg2IiB3aWR0aD0iNjQiIGhlaWdodD0iNDQiIHJ4PSIxMiIgZmlsbD0iIzBiMTQyNiIgc3Ryb2tlPSIjMzM0MTU1IiBzdHJva2Utd2lkdGg9IjMiLz4KICA8cmVjdCB4PSI5NCIgeT0iMTkyIiB3aWR0aD0iNTIiIGhlaWdodD0iMzIiIHJ4PSI4IiBmaWxsPSIjMjU2M2ViIi8+CiAgPHRleHQgeD0iMTIwIiB5PSIyMTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSInUGx1cyBKYWthcnRhIFNhbnMnLCdMaWJlcmF0aW9uIFNhbnMnLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSI4MDAiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiNmZmYiIGxldHRlci1zcGFjaW5nPSIxIj5PSzwvdGV4dD4KICA8cmVjdCB4PSI5OCIgeT0iMjQ0IiB3aWR0aD0iNDQiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiMyMmQzZWUiIG9wYWNpdHk9Ii43Ii8+CiAgPCEtLSBuZWNrIC0tPgogIDxyZWN0IHg9IjEwNiIgeT0iMTUwIiB3aWR0aD0iMjgiIGhlaWdodD0iMTYiIHJ4PSI2IiBmaWxsPSIjMzM0MTU1Ii8+CiAgPCEtLSBoZWFkIC0tPgogIDxyZWN0IHg9IjYyIiB5PSI2OCIgd2lkdGg9IjExNiIgaGVpZ2h0PSI5MiIgcng9IjM4IiBmaWxsPSIjZThlZWZiIi8+CiAgPHJlY3QgeD0iNzYiIHk9Ijg2IiB3aWR0aD0iODgiIGhlaWdodD0iNTgiIHJ4PSIyNiIgZmlsbD0iIzBiMTQyNiIvPgogIDxwYXRoIGQ9Ik05MiAxMTAgaDE4IiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iNyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTEyOCAxMTIgcTEwIC0xMiAyMCAwIiBzdHJva2U9IiMyMmQzZWUiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTEwNCAxMjUgcTE2IDE0IDMyIDAiIHN0cm9rZT0iIzIyZDNlZSIgc3Ryb2tlLXdpZHRoPSI1IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8Y2lyY2xlIGN4PSI3MiIgY3k9IjEyOCIgcj0iNiIgZmlsbD0iI2ZkYTRhZiIgb3BhY2l0eT0iLjYiLz48Y2lyY2xlIGN4PSIxNjgiIGN5PSIxMjgiIHI9IjYiIGZpbGw9IiNmZGE0YWYiIG9wYWNpdHk9Ii42Ii8+CiAgPCEtLSBoZWxtZXQgLS0+CiAgPHBhdGggZD0iTTYwIDg0IFE2MCAzNiAxMjAgMzQgUTE4MCAzNiAxODAgODQgWiIgZmlsbD0iI2ZiYmYyNCIvPgogIDxyZWN0IHg9IjUwIiB5PSI3OCIgd2lkdGg9IjE0MCIgaGVpZ2h0PSIxNCIgcng9IjciIGZpbGw9IiNmNTllMGIiLz4KICA8cmVjdCB4PSIxMTQiIHk9IjM2IiB3aWR0aD0iMTIiIGhlaWdodD0iNDQiIHJ4PSI2IiBmaWxsPSIjZjU5ZTBiIi8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTAzIDQ0KSBzY2FsZSguMjYpIj48cmVjdCB4PSItNiIgeT0iMCIgd2lkdGg9IjEzMiIgaGVpZ2h0PSIxMjIiIHJ4PSIzMCIgZmlsbD0iIzBiMTQyNiIvPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMCkgc2NhbGUoMSkiPgogIDxwYXRoIGQ9Ik0zMCA5NSBWMjUgSDUwIEEzNSAzNSAwIDAgMSA1MCA5NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNMzAgOTUgSDEwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI2cpIiBzdHJva2Utd2lkdGg9IjEzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNOTIgODMgTDEwNiA5NSBMOTIgMTA3IiBmaWxsPSJub25lIiBzdHJva2U9IiNhNzhiZmEiIHN0cm9rZS13aWR0aD0iMTEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjQ0IiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iIzIyZDNlZSIvPjxjaXJjbGUgY3g9IjU3IiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iIzNiODJmNiIvPjxjaXJjbGUgY3g9IjcwIiBjeT0iNjAiIHI9IjUuNSIgZmlsbD0iI2E3OGJmYSIvPgo8L2c+PC9nPgogIAo8L2c+PC9zdmc+'};
+function setWatch(k,msg){const fl=$('#floSim');if(fl){const m=k==='alert'||k==='safe'?'alert':k==='ok'?'ok':'happy';if(fl.dataset.m!==m){fl.dataset.m=m;fl.src=FLO[m];fl.classList.remove('pop');void fl.offsetWidth;fl.classList.add('pop')}}
+  const w=$('#watch'),s=$('#wscr');w.className='watch'+(k==='alert'?' alert':k==='ok'?' ok':k==='safe'?' safe':'');
+  if(k==='idle')s.innerHTML='<b>SIAGA</b><p>Smart andon<br>pemimpin regu</p><div class="tm">'+(S?clockStr():'--:--')+'</div>';
+  else s.innerHTML=`<b>${k==='alert'?'ANDON':k==='ok'?'SELESAI':'K3'}</b><p>${msg}</p><div class="tm">${clockStr()}</div>`}
+function kpi(){
+  $('#kOut').textContent=fmt(S.done);
+  const fp=S.mode==='B'?99.0+Math.sin(S.t/700)*.15:97.5+Math.sin(S.t/700)*.2;
+  setK('#kFpy',fmt(fp,1)+'%',fp>=99?'good':'bad');
+  const wip=S.mode==='B'?1.0+Math.max(0,S.dem)/100:1.8+Math.max(0,-S.dem)/60;setK('#kWip',fmt(wip,1)+' hari',wip<=1.05?'good':'bad');
+  setK('#kWh',Math.round(S.wh*100)+'%',S.wh<=.76?'good':'bad');
+  const r=S.resp.length?S.resp.reduce((a,b)=>a+b,0)/S.resp.length:(S.mode==='B'?50:300);setK('#kResp',r>=60?fmt(r/60,1)+' mnt':Math.round(r)+' dtk',r<=60?'good':'bad');
+  setK('#kNm',S.nm,S.nm?'bad':'good');
+  const cap=WSEC/CT(),d=demand();const ot=Math.max(0,(d-cap)*CT()/60);setK('#kOt',ot>0?Math.round(ot)+' menit · kurang '+Math.round(d-cap)+' unit':'0 menit · kapasitas '+Math.round(cap)+' ≥ demand '+d,ot>0?'bad':'good');
+  $('#clock').textContent='Hari 1 · '+clockStr()}
+function setK(s,t,c){const e=$(s);e.textContent=t;e.className='n '+(c||'')}
+let last=performance.now(),simVisible=false;
+new IntersectionObserver(es=>simVisible=es[0].isIntersecting,{threshold:.05}).observe(cv);
+function loop(n){const dt=Math.min(.05,(n-last)/1000);last=n;if(simVisible&&!S.paused)step(dt);if(simVisible){draw();kpi()}requestAnimationFrame(loop)}
+reset();requestAnimationFrame(loop);
+seg($('#modeSeg'),b=>{S.mode=b.dataset.m;$('#modeSeg').classList.toggle('a',S.mode==='A');reset()});
+$('#dem').oninput=e=>{S.dem=+e.target.value;$('#demV').textContent=(S.dem>0?'+':'')+S.dem+'%'};
+$('#spd').oninput=e=>{S.spd=+e.target.value;$('#spdV').textContent=S.spd+'×'};
+$('#bDef').onclick=()=>{const u=S.units.filter(u=>u.x<ST[GLOVE].x-20).sort((a,b)=>b.x-a.x)[0];if(u){u.def=true;log(`Part salah varian disuplai ke unit #${u.id}`,'o')}};
+$('#bFork').onclick=()=>{S.fork.force=3;S.alertT=0;log('Operator menyeberang jalur forklift…','o')};
+$('#bPause').onclick=e=>{S.paused=!S.paused;e.currentTarget.textContent=S.paused?'▶ Lanjut':'❚❚ Jeda'};
+$('#bReset').onclick=reset;
+
+/* ================= ARCHITECTURE ================= */
+const NODES=[
+ {id:'dem',x:230,y:20,w:300,h:52,c:'#f59e0b',t:'Customer demand',k:'ELEMEN 1',d:'Pesanan dealer domestik dan ekspor ditarik harian ke demand hub; ramalan hanya dipakai untuk kapasitas bulanan.',ch:'Ramalan batch mingguan → sinyal pesanan harian'},
+ {id:'pln',x:230,y:110,w:300,h:52,c:'#3b82f6',t:'Production planning',k:'ELEMEN 2',d:'Digital heijunka board meratakan volume dan campuran per jam dengan slot kapasitas fleksibel ±15%.',ch:'Jadwal statis → perataan harian adaptif'},
+ {id:'mat',x:20,y:220,w:136,h:92,c:'#22d3ee',t:'Material flow',k:'ELEMEN 3',d:'E-kanban RFID, supermarket sisi lini, dan milk-run terjadwal tiap 60 menit. Konsumsi aktual memicu penarikan otomatis.',ch:'Kartu fisik & gudang 88% → tarikan berbasis konsumsi'},
+ {id:'man',x:166,y:220,w:136,h:92,c:'#22d3ee',t:'Manpower',k:'ELEMEN 4',d:'Operator multi-skill (target 3 pos/orang), rotasi ergonomis berbasis data SafeBand.',ch:'Penempatan tetap → penempatan fleksibel berbasis skill matrix'},
+ {id:'eq',x:312,y:220,w:136,h:92,c:'#22d3ee',t:'Equipment',k:'ELEMEN 5',d:'Sensor IoT pada nutrunner dan konveyor; TPM berbasis kondisi.',ch:'Perawatan terjadwal → berbasis kondisi'},
+ {id:'qc',x:458,y:220,w:136,h:92,c:'#22d3ee',t:'Quality control',k:'ELEMEN 6',d:'Smart glove scanner dan torsi digital: unit tidak dapat maju bila verifikasi gagal (Jidoka digital).',ch:'Inspeksi akhir → kualitas di sumber'},
+ {id:'saf',x:604,y:220,w:136,h:92,c:'#22d3ee',t:'Safety control',k:'ELEMEN 7',d:'Deteksi proksimitas UWB manusia–forklift, peringatan haptik, heat map risiko.',ch:'Reaktif pasca-kejadian → pencegahan real-time'},
+ {id:'dat',x:20,y:370,w:720,h:56,c:'#22c55e',t:'Data · Line data platform',k:'ELEMEN 8',d:'Satu platform data lini dengan rekaman otomatis dari wearable, mesin, RFID, dan andon.',ch:'Pencatatan manual ±120 mnt/shift → ≤60 mnt'},
+ {id:'dec',x:180,y:470,w:400,h:56,c:'#a78bfa',t:'Management decision · Digital Obeya',k:'ELEMEN 9',d:'Rapat Digital Obeya harian 15 menit dengan eskalasi berjenjang otomatis.',ch:'Laporan kertas → keputusan berbasis data real-time'},
+];
+const svg=$('#archSvg');const ns='http://www.w3.org/2000/svg';
+const mk=(t,a,p=svg)=>{const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e};
+// flows
+const flows=[[380,72,380,110],[380,162,380,206],[88,312,88,370],[234,312,234,370],[380,312,380,370],[526,312,526,370],[672,312,672,370],[380,426,380,470]];
+flows.forEach(f=>mk('line',{x1:f[0],y1:f[1],x2:f[2],y2:f[3],stroke:'#22d3ee','stroke-width':2,class:'flow'}));
+mk('path',{d:'M580 498 H740 V136 H530',fill:'none',stroke:'#f59e0b','stroke-width':2,class:'flow'});
+mk('text',{x:748,y:320,fill:'#f59e0b','font-size':11,'font-family':'Plus Jakarta Sans, sans-serif',transform:'rotate(90 748 320)','text-anchor':'middle'}).textContent='umpan balik keputusan';
+mk('rect',{x:10,y:200,width:740,height:124,rx:14,fill:'none',stroke:'#25406e','stroke-dasharray':'5 5'});
+mk('text',{x:22,y:216,fill:'#5d7096','font-size':10.5,'font-family':'JetBrains Mono, monospace','font-weight':700}).textContent='LINI PRODUKSI · ONE-PIECE FLOW · CT 58 DTK';
+NODES.forEach(n=>{const g=mk('g',{class:'node','data-id':n.id});
+  mk('rect',{x:n.x,y:n.y+(n.y===220?6:0),width:n.w,height:n.h-(n.y===220?6:0),rx:12,fill:n.c+'1f',stroke:n.c+'99','stroke-width':1.4},g);
+  const tx=mk('text',{x:n.x+n.w/2,y:n.y+n.h/2+(n.y===220?8:5),'text-anchor':'middle',fill:'#e8eefb','font-size':n.w<150?12:14,'font-weight':700,'font-family':'Plus Jakarta Sans, sans-serif'},g);
+  if(n.w<150){const [a,b]=n.t.split(' ');mk('tspan',{x:n.x+n.w/2,dy:-8},tx).textContent=a;mk('tspan',{x:n.x+n.w/2,dy:17},tx).textContent=b||''}else tx.textContent=n.t;
+  g.addEventListener('click',()=>sel(n.id));g.addEventListener('mouseenter',()=>sel(n.id))});
+// travelling pulses
+const pulses=flows.map((f,i)=>({f,o:mk('circle',{r:4,fill:'#22d3ee'}),p:i/flows.length}));
+(function pl(){pulses.forEach(p=>{p.p=(p.p+.006)%1;const [a,b,c,d]=p.f;p.o.setAttribute('cx',a+(c-a)*p.p);p.o.setAttribute('cy',b+(d-b)*p.p);p.o.setAttribute('opacity',Math.sin(p.p*Math.PI))});if(!RM)requestAnimationFrame(pl)})();
+function sel(id){const n=NODES.find(x=>x.id===id);$$('.node').forEach(g=>g.classList.toggle('sel',g.dataset.id===id));
+  const i=$('#info');i.style.opacity=0;setTimeout(()=>{i.innerHTML=`<div class="k">${n.k}</div><h3>${n.t}</h3><p>${n.d}</p><div class="ch"><b>Perubahan:</b> ${n.ch}</div>`;i.style.transition='opacity .35s';i.style.opacity=1},120)}
+sel('qc');
+let ai=0;const autoArch=setInterval(()=>{if(document.querySelector('#arch .card').matches(':hover'))return;ai=(ai+1)%NODES.length;sel(NODES[ai].id)},4200);
+
+/* ================= CALC ================= */
+const cR=$('#cR');const MIN=650,MAX=990;
+const pos=v=>(v-MIN)/(MAX-MIN)*100+'%';
+$('#g62').style.left=pos(890);$('#g58').style.left=pos(952);
+function calc(){const d=+cR.value;$('#cD').textContent=fmt(d);const p=Math.round((d/820-1)*100);$('#cDp').textContent=(p>0?'+':p<0?'':'±')+p+'%';
+  $('#cT').textContent='takt '+fmt(55200/d,1)+' dtk';$('#gD').style.left=pos(d);
+  [[62,'#o62'],[58,'#o58']].forEach(([ct,s])=>{const cap=55200/ct,ot=(d-cap)*ct/60,e=$(s);if(ot>0){e.className='ot bad';e.textContent='lembur ±'+Math.round(ot)+' menit/hari'}else{e.className='ot good';e.textContent='tanpa lembur'}})}
+cR.oninput=calc;calc();
+watchIn($('#calc .calc .card'),()=>{let v=820;const t=setInterval(()=>{v+=6;cR.value=v;calc();if(v>=943)clearInterval(t)},22)});
+
+/* ================= IMPACT ================= */
+const BEN=[['Penurunan man-hour',3.69],['Biaya modal kerja WIP',3.94],['Penghapusan lembur',2.45],['Pembebasan pencatatan',1.92],['Penurunan repair',1.33],['Urgent movement',0.75]];
+$('#blist').innerHTML=BEN.map(b=>`<div class="bi"><span>${b[0]}</span><div class="tr"><i data-w="${b[1]/3.94*100}"></i></div><span class="vv">${fmt(b[1],2)}</span></div>`).join('')+`<div class="bi" style="margin-top:4px;font-weight:700"><span>Total</span><span></span><span class="vv" style="color:var(--text)">14,08</span></div>`;
+watchIn($('#blist'),()=>$$('#blist i').forEach((e,i)=>setTimeout(()=>e.style.width=e.dataset.w+'%',i*120)));
+const cf=$('#cfChart');const X0=70,Y0=170,SC=8.2,BW=70;
+const mkc=(t,a)=>{const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);cf.appendChild(e);return e};
+[-10,-5,0,5,10,15].forEach(v=>{mkc('line',{x1:X0-10,x2:620,y1:Y0-v*SC,y2:Y0-v*SC,stroke:v===0?'#5d7096':'#17284a','stroke-width':v===0?1.5:1});mkc('text',{x:X0-16,y:Y0-v*SC+4,'text-anchor':'end','font-size':11,fill:'#5d7096','font-family':'JetBrains Mono, monospace'}).textContent=v});
+const bars=[],labs=[];['Tahun 0','Tahun 1','Tahun 2','Tahun 3'].forEach((l,i)=>{const x=X0+30+i*140;bars.push(mkc('rect',{x,y:Y0,width:BW,height:0,rx:6,class:'cfbar'}));mkc('text',{x:x+BW/2,y:318,'text-anchor':'middle','font-size':12,fill:'#8fa3c7','font-family':'Plus Jakarta Sans, sans-serif'}).textContent=l;labs.push(mkc('text',{x:x+BW/2,y:Y0,'text-anchor':'middle','font-size':11.5,'font-weight':700,fill:'#e8eefb','font-family':'JetBrains Mono, monospace',opacity:0,style:'transition:all 1.2s'}))});
+const cline=mkc('polyline',{fill:'none',stroke:'#fbbf24','stroke-width':3,'stroke-linejoin':'round',class:'cfline'});
+const dots=[0,1,2,3].map(()=>mkc('circle',{r:5,fill:'#fbbf24',opacity:0,style:'transition:all 1.2s'}));
+const pb=mkc('g',{opacity:0,style:'transition:opacity .8s 1.2s'});
+function cfDraw(f){const r2=v=>Math.round(v*100)/100;const net=[-11.22,r2(4.224*f-1.5),r2(11.264*f-1.5),r2(14.08*f-1.5)];let c=0;const cum=net.map(v=>c+=v);
+  net.forEach((v,i)=>{const h=Math.abs(v)*SC;bars[i].setAttribute('height',h);bars[i].setAttribute('y',v>=0?Y0-h:Y0);bars[i].setAttribute('fill',v<0?'#ef4444':'url(#bg)')});
+  const pts=cum.map((v,i)=>[X0+30+i*140+BW/2,Y0-v*SC]);cline.setAttribute('points',pts.map(p=>p.join(',')).join(' '));
+  const L=pts.reduce((a,p,i)=>i?a+Math.hypot(p[0]-pts[i-1][0],p[1]-pts[i-1][1]):0,0);cline.style.strokeDasharray=L;cline.style.strokeDashoffset=L;requestAnimationFrame(()=>requestAnimationFrame(()=>cline.style.strokeDashoffset=0));
+  pts.forEach((p,i)=>{dots[i].setAttribute('cx',p[0]);dots[i].setAttribute('cy',p[1]);dots[i].setAttribute('opacity',1);labs[i].setAttribute('y',p[1]-12);labs[i].setAttribute('x',p[0]+(i?0:28));labs[i].setAttribute('opacity',1);labs[i].textContent=fmt(cum[i],2)});
+  const npv=net.reduce((a,v,i)=>a+v/Math.pow(1.1,i),0);$('#mNpv').textContent=fmt(npv,2);$('#mNpv').style.color=npv<0?'#fca5a5':'#86efac';$('#mCum').textContent=fmt(cum[3],2);
+  // payback marker
+  pb.innerHTML='';let k=cum.findIndex(v=>v>=0);if(k>0){const fr=-cum[k-1]/net[k];const x=pts[k-1][0]+(pts[k][0]-pts[k-1][0])*fr;
+    const l=document.createElementNS(ns,'line');[['x1',x],['x2',x],['y1',20],['y2',Y0+90],['stroke','#22c55e'],['stroke-dasharray','4 4']].forEach(a=>l.setAttribute(...a));pb.appendChild(l);
+    const t=document.createElementNS(ns,'text');[['x',x+6],['y',34],['fill','#86efac'],['font-size',12],['font-family','Plus Jakarta Sans, sans-serif'],['font-weight',700]].forEach(a=>t.setAttribute(...a));t.textContent='payback ±'+Math.round((k-1+fr)*12)+' bln';pb.appendChild(t)}
+  pb.setAttribute('opacity',0);setTimeout(()=>pb.setAttribute('opacity',1),50)}
+const defs=mkc('defs',{});defs.innerHTML='<linearGradient id="bg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#3b82f6"/></linearGradient>';
+let curF=1;watchIn(cf,()=>cfDraw(curF));
+seg($('#scSeg'),b=>{curF=+b.dataset.s;cfDraw(curF)});
+
+/* ================= ROADMAP ================= */
+watchIn($('.road'),()=>{$('#roadLn').style.width='100%';$$('.ph').forEach((p,i)=>setTimeout(()=>p.classList.add('in'),400+i*700))});
+})();
+</script>
+</body>
+</html>
